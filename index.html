@@ -13,38 +13,38 @@
 	<body>
 	<hr>
 	<section>
-		<div class="flex flex-wrap overflow-hidden font-sans bg-red-400 top h-100 h-full">
+		<div class="flex flex-wrap overflow-hidden font-sans bg-red-400">
 			<div class="w-3/5 overflow-hidden text-center text-white">
 				<p class="font-sans p-10 text-6xl">
-					Gastrointestinal Cancer Prediction
+					<b>Gastrointestinal Cancer Prediction</b>
 				</p>
 			</div>
-			<div class="w-2/5 p-10 align-middle text-white flex">
+			<div class="w-2/5 p-20 align-middle text-white">
 				<div class="flex flex-wrap overflow-hidden">
 					<div class="w-full overflow-hidden">
-						<p class="font-sans p-2 text-left text-3xl">
-							GOAL
+						<p class="font-sans p-2 text-3xl">
+							<b><u>GOAL</b></u>
 						</p>
 					</div>
-					<div>
-						<p class="font-sans p-2 text-left text-2x1">
-							Utilise our cancer prediction model with your own image.
+					<div class="w-full overflow-hidden">
+						<p class="font-sans p-2 text-xl">
+							Utilise our cancer prediction model with your own histological image.
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="w-3/5 place-self-center p-10">
+			<div class="w-3/5 place-self-center p-10" style="height:400px">
 				<img class="mx-auto" src="https://via.placeholder.com/600x300.jpg"></image>
 			</div>
-			<div class="w-2/5 p-10 align-middle text-white flex">
+			<div class="w-2/5 p-20 align-middle text-white">
 				<div class="flex flex-wrap overflow-hidden">
-					<div class="w-full max-h-12 object-bottom overflow-hidden">
-						<p class="font-sans p-2 text-left-bottom text-3xl">
-							STRATEGY
+					<div class="w-full overflow-hidden">
+						<p class="font-sans p-2 text-3xl">
+							<b><u>STRATEGY</b></u>
 						</p>
 					</div>
-					<div class="w-full max-h-12 overflow-hidden">
-						<p class="font-sans p-2 text-justify text-2x1">
+					<div class="w-full overflow-hidden">
+						<p class="font-sans p-2 text-xl">
 							We create a classfication model to identify between the two 
 							possible categories MSS and MSIMUS (MSI) of cancer.
 						</p>
@@ -56,15 +56,61 @@
 
 	<hr>
 	<section>
-		<div>
-			<h1>Image upload section</h1>
-			<button type="button">Upload Image</button>
+		<div class="flex flex-wrap overflow-hidden bg-gray-400" style="height:600px">
+
+			<div class="w-full h-1/6 text-center overflow-hidden">
+			</div>
+			<div class="w-full h-1/3 text-center overflow-hidden">
+				<p class="font-sans text-white font-bold text-5xl">
+					Upload Image
+				</p>
+			</div>
+
+			<div class="w-full h-1/3 overflow-hidden items-center flex flex-wrap">
+				<div class="w-full overflow-hidden">
+					<p class="font-sans text-white text-center">
+						Upload your own image to see the prediction result.
+					</p>
+				</div>
+				<div class="w-full justify-center overflow-hidden flex">
+					<button class="block bg-gray-500 rounded text-white p-4 text-2xl" type="button">
+						Upload Image
+					</button>
+				</div>
+			</div>
+			<div class="w-full h-1/6 text-center overflow-hidden">
+			</div>
 		</div>
 	</section>
 
 	<hr>
 	<section>
-		<h1>Prediction  result section</h1>
+		<div class="flex flex-wrap overflow-hidden bg-red-400" style="height:600px">
+			<div class="w-full h-1/3 flex items-center justify-center overflow-hidden">
+				<p class="font-sans text-white text-4xl">
+					<b>Prediction Results</b>
+				</p>
+			</div>
+			<div class="w-full h-2/3 text-center flex items-center pb-20 justify-center overflow-hidden">
+				<div class="flex flex-wrap overflow-hidden">
+					<div class="w-60 overflow-hidden">
+						<p class="font-sans text-white p-10 float-right text-3xl">
+							Type:
+						</p>
+						<p class="font-sans text-white p-10 float-right text-3xl">
+							Percentage:
+						</p>
+					</div>
+					<div class="w-60 overflow-hidden">
+						<p class="font-sans text-white p-10 float-left font-bold text-3xl">
+							MSS
+						</p>
+						<p class="font-sans text-white p-10 float-left font-bold text-3xl">
+							54%
+						</p>
+					</div>
+			</div>
+		</div>
 	</section>
 
 	<hr>
