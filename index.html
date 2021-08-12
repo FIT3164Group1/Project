@@ -2,42 +2,53 @@
 <!DOCTYPE html>
 <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
 	<head>
-	<style>
-	* {font-family: sans-serif;}
-	h1 {text-align: center;}
-	h3 {text-align: center;}
-	</style>
-	<title>FIT3164 Assignment</title>
-	<h1>Cancer Prediction Visualisation</h1>
-	<h3>By Group 1: Lewis Ha, Qile Wan, Andrew Cao, Cooper Corbett</h3>
+	<title>Gastroinintestinal Cancer Prediction</title>
 	<script type="text/javascript" src="https://raw.githubusercontent.com/FIT3164Group1/Project/main/dummy.json"></script>
-	# link to css
+	<!--link to css-->
 	<link rel="stylesheet" type="text/css" href="tailwind.css">
-	# link to javascript
+	<!--link to javascript-->
 	<script src="tailwind.config.js"></script>
 	</head>
 
 	<body>
 	<hr>
 	<section>
-		<h1>Gastroinintestinal Cancer Prediction</h1>
-			<img src="https://via.placeholder.com/600x300.jpg"></image>
-		<h3>GOAL</h3>
-			<p>
-				Utilise our cancer prediction model with your own 
-				image.
-			</p>
-		<h3>STRATEGY</h3>
-			<p>
-				We create a classfication model to identify between the two 
-				possible categories MSS and MSIMUS (MSI) of cancer.
-			</p>
+		<div class="flex flex-wrap overflow-hidden font-sans bg-red-400 top h-100 h-full">
+			<div class="w-3/5 overflow-hidden text-center text-white">
+				<p class="font-sans p-10 text-6xl">
+					Gastrointestinal Cancer Prediction
+				</p>
+			</div>
+			<div class="w-2/5 p-10 align-middle text-white flex">
+				<p class="font-sans p-2 text-left text-2xl">
+					GOAL
+				</p>
+				<p class="font-sans p-2 pb-10 text-justify text-lg">
+					Utilise our cancer prediction model with your own 
+					image.
+				</p>
+			</div>
+			<div class="w-3/5 place-self-center p-10">
+				<img class="object-contain object-center" src="https://via.placeholder.com/600x300.jpg"></image>
+			</div>
+			<div class="w-2/5 p-10 align-middle text-white flex">
+				<p class="font-sans p-2 text-left text-2xl">
+					STRATEGY
+				</p>
+				<p class="font-sans p-2 text-justify text-lg">
+					We create a classfication model to identify between the two 
+					possible categories MSS and MSIMUS (MSI) of cancer.
+				</p>
+			</div>
+		</div>
 	</section>
 
 	<hr>
 	<section>
-		<h1>Image upload section</h1>
-		<button type="button">Upload Image</button>
+		<div>
+			<h1>Image upload section</h1>
+			<button type="button">Upload Image</button>
+		</div>
 	</section>
 
 	<hr>
