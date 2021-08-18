@@ -17,16 +17,16 @@
 	<script src="custom.js"></script>
 	</head>
 
-	<!--tabs-->
-	<body>
+	<!--tabs (tabs are shown in reverse order) -->
+	<body onload="defaultTab();fileUpload();">
 	<div class="bar">
-		<button class="bar button" onclick="openTab('Prediction')">Home</button>
-		<button class="bar button" onclick="openTab('Prediction')">About</button>
-		<button class="bar button" onclick="openTab('Prediction')">Contact</button>
+		<button class="bar_button" onclick="openTab(event, 'Contact')">Contact</button>
+		<button class="bar_button" onclick="openTab(event, 'About')">About</button>
+		<button class="bar_button" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
 	</div>
 
 		
-	<div id="Home" class="tab">
+	<div id="Home" class="tabcontent">
 		<hr>
 		<section>
 			<div class="flex flex-wrap overflow-hidden font-sans bg-red-400">
@@ -89,9 +89,11 @@
 						</p>
 					</div>
 					<div class="w-full justify-center overflow-hidden flex">
-						<button class="block bg-gray-500 rounded text-white p-4 text-2xl" type="button">
-							Upload Image
-						</button>
+						<form id="form_file" action="upload.php" method="POST" enctype="multipart/form-data">
+							<!-- Hidden upload button; click this when above button is clicked -->
+							<input id='upload_file' type='file' name="filename" hidden/>
+							<input id="upload_button" class="block bg-gray-500 rounded text-white p-4 text-2xl" type="button" value="Upload Image">
+						</form>
 					</div>
 				</div>
 				<div class="w-full h-1/6 text-center overflow-hidden">
@@ -125,6 +127,7 @@
 								54%
 							</p>
 						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -151,10 +154,63 @@
 		</section>
 	</div>
 	
-	<div id="About" class="tab">
+	<div id="About" class="tabcontent" style="height:1400px">
+		
+		<div class="bg-red-400" style="height:1356px">
+			<div class="flex flex-wrap overflow-hidden p-20 pl-20 pr-20">
+				<div class="w-full overflow-hidden text-center">
+				<!-- Title 1 -->
+					<p class="font-sans p-5 text-white text-5xl">
+						TITLE 1
+					</p>
+				</div>
+
+				<div class="w-full overflow-hidden">
+				<!-- Content 1-->
+					<p class="font-sans p-5 pb-10 pb- text-white text-3xl">
+						TEXT
+					</p>
+				</div>
+
+				<div class="w-full overflow-hidden text-center">
+				<!-- Title 2 -->
+					<p class="font-sans p-5 text-white text-5xl">
+						TITLE 2
+					</p>
+				</div>
+
+				<div class="w-full overflow-hidden">
+				<!-- Content 2-->
+					<p class="font-sans p-5 pb-10 text-white text-3xl">
+						TEXT 2
+					</p>
+				</div>
+
+				<div class="w-full overflow-hidden text-center">
+				<!-- Title 3 -->
+					<p class="font-sans p-5 text-white text-5xl">
+						TITLE 3
+					</p>
+				</div>
+
+				<div class="w-full overflow-hidden">
+				<!-- Content 3-->
+					<p class="font-sans p-5 pb-10 text-white text-3xl">
+						TEXT 3
+					</p>
+				</div>
+				
+
+			</div>
+		</div>
+		
+		<!-- bottom border-->
+		<div class="bg-gray-400" style="height:44px">
+		</div>
 	</div>
 	
-	<div id="Contact" class="tab">
+	<div id="Contact" class="tabcontent" style="height:1400px">
+		<p>TEXT</p>
 	</div>
 	
 	</body>

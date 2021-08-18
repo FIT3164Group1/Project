@@ -1,0 +1,28 @@
+.bar {
+	overflow:hidden;
+	background-color: #9ca3af;
+	height:44px;
+}
+
+.bar_button {
+	color: #FFFFFF;
+	float:right;
+	border:none;
+	outline:none;
+	cursor:pointer;
+	padding: 10px;
+}
+
+.bar_button:hover {
+	background-color: #f87171;
+}
+
+
+.bar_button.active {
+	background-color: #000000;
+}
+
+.tabcontent {
+	display:none;
+	border:none;
+}
