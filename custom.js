@@ -33,11 +33,19 @@ function fileUpload(){
 	function openUploadFile() {
 		document.getElementById('upload_file').click();
 	}
-	
-	document.getElementById('upload_file').addEventListener('change', submitForm);
-	function submitForm(){
-		document.getElementById('form_file').submit();
-	}
 }
 
 
+// Convert uploaded image to Base64
+function convert_base64(image){
+	var reader = new FileReader();
+	var uploadedImage = image.files[0];
+	reader.onloadend = function() {
+		console.log("Image converted to Base64: " + reader.result)
+	}
+	reader.readAsDataURL(uploadedImage);
+	const obj = JSON.stringify(reader);
+}
+
+
+// Send JSON to Python

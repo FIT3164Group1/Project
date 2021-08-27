@@ -3,7 +3,6 @@
 <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
 	<head>
 	<title>Gastrointestinal Cancer Prediction</title>
-	<script type="text/javascript" src="https://raw.githubusercontent.com/FIT3164Group1/Project/main/dummy.json"></script>
 	<!--tailwind css and js-->
 	<!--link to tailwind css-->
 	<link rel="stylesheet" type="text/css" href="tailwind.css">
@@ -90,11 +89,9 @@
 						</p>
 					</div>
 					<div class="w-full justify-center overflow-hidden flex">
-						<form id="form_file" action="upload.php" method="POST" enctype="multipart/form-data">
-							<!-- Hidden upload button; click this when above button is clicked -->
-							<input id='upload_file' type='file' name="filename" hidden/>
-							<input id="upload_button" class="block bg-gray-500 rounded text-white p-4 text-2xl" type="button" value="Upload Image">
-						</form>
+						<input id='upload_file' type='file' onchange="convert_base64(this);" hidden/>
+						<!-- Hidden upload button; click this when below button is clicked -->
+						<input id="upload_button" class="block bg-gray-500 rounded text-white p-4 text-2xl" type="button" value="Upload Image">
 					</div>
 				</div>
 				<div class="w-full h-1/6 text-center overflow-hidden">
