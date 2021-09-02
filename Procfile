@@ -1,1 +1,1 @@
-web: gunicorn andys_copy_project.py --log-file -
+web: gunicorn andys_copy_project.py:app
