@@ -1,1 +1,1 @@
-web: gunicorn Project.wsgi --log-file -
+web: gunicorn andys_copy_project.py --log-file -
