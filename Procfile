@@ -1,1 +1,0 @@
-web: gunicorn andys_copy_project.py:app
