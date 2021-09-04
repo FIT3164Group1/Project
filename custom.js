@@ -45,8 +45,8 @@ function convert_base64(image) {
         console.log("Image converted to Base64: " + reader.result)
     }
     reader.readAsDataURL(uploadedImage);
-    // const obj = JSON.stringify(reader);
-    return reader.result
+	// Send HTTP request
+    const obj = JSON.stringify(reader);
 }
 
 
