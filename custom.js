@@ -75,7 +75,7 @@ function http_request(image) {
       };
       
       fetch("https://australia-southeast1-fit3164-group-1.cloudfunctions.net/auth-google-service-account", requestOptions)
-        .then(response => response.text())
+        //.then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
     };
