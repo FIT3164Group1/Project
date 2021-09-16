@@ -42,11 +42,14 @@ function http_request(image) {
 	// Convert uploaded image to Base64
     var reader = new FileReader();
     var uploadedImage = image.files[0];
+	var image_base64 = reader.result;
     reader.onloadend = function() {
-		console.log("Image converted to Base64: " + reader.result)
-		image_base64 = reader.result.replace("data:*/*;base64;","")
-	}
-    reader.readAsDataURL(uploadedImage);
+		image_base64 = reader.result.replace(/\(data:image.*?;base64,\)/, "");
+        image_base64 = image_base64.replace(/\+/g, '-');
+        image_base64 = image_base64.replace(/\//g, '_');
+        image_base64 = image_base64.replace(/\=+$/, '');
+		console.log("Image converted to Base64: " + image_base64)
+	
 	
 	
 	// Convert to JSON
@@ -56,7 +59,7 @@ function http_request(image) {
 	var image_json = JSON.stringify(
 	{
 		"instances": [
-		{"b64":String(image_base64)}
+		[String(image_base64)]
 		]
 	}
 	);
@@ -70,8 +73,10 @@ function http_request(image) {
         redirect: 'follow'
       };
       
-      fetch("http://australia-southeast1-fit3164-group-1.cloudfunctions.net/auth-google-service-account", requestOptions)
+      fetch("https://australia-southeast1-fit3164-group-1.cloudfunctions.net/auth-google-service-account", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-    }
+    };
+    reader.readAsDataURL(uploadedImage);
+	}
