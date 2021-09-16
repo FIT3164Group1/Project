@@ -44,7 +44,7 @@ function http_request(image) {
     var uploadedImage = image.files[0];
 	var image_base64 = reader.result;
     reader.onloadend = function() {
-		image_base64 = reader.result.replace(/\(data:image.*?;base64,\)/, "");
+		image_base64 = reader.result.replace(/data:image.*?;base64,/, "");
         image_base64 = image_base64.replace(/\+/g, '-');
         image_base64 = image_base64.replace(/\//g, '_');
         image_base64 = image_base64.replace(/\=+$/, '');
