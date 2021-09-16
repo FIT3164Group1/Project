@@ -68,6 +68,7 @@ function http_request(image) {
 	// Send HTTP request
     var requestOptions = {
         method: 'POST',
+		mode: 'no-cors', // no-cors, *cors, same-origin
         headers: myHeaders,
         body: image_json,
         redirect: 'follow'
