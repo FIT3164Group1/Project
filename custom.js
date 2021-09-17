@@ -36,48 +36,47 @@ function fileUpload() {
     }
 }
 
-	
+
 
 function http_request(image) {
-	// Convert uploaded image to Base64
+    // Convert uploaded image to Base64
     var reader = new FileReader();
     var uploadedImage = image.files[0];
-	var image_base64 = reader.result;
+    var image_base64 = reader.result;
     reader.onloadend = function() {
-		image_base64 = reader.result.replace(/data:image.*?;base64,/, "");
+        image_base64 = reader.result.replace(/data:image.*?;base64,/, "");
         image_base64 = image_base64.replace(/\+/g, '-');
         image_base64 = image_base64.replace(/\//g, '_');
         image_base64 = image_base64.replace(/\=+$/, '');
-		console.log("Image converted to Base64: " + image_base64)
-	
-	
-	
-	// Convert to JSON
-	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
+        console.log("Image converted to Base64: " + image_base64)
 
-	var image_json = JSON.stringify(
-	{
-		"instances": [
-		[String(image_base64)]
-		]
-	}
-	);
-	
-	
-	// Send HTTP request
-    var requestOptions = {
-        method: 'POST',
-		mode: 'no-cors', // no-cors, *cors, same-origin
-        headers: myHeaders,
-        body: image_json,
-        redirect: 'follow'
-      };
-      
-      fetch("https://australia-southeast1-fit3164-group-1.cloudfunctions.net/auth-google-service-account", requestOptions)
-        //.then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+
+
+        // Convert to JSON
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var image_json = JSON.stringify({
+            "instances": [
+                [String(image_base64)]
+            ]
+        });
+
+
+        // Send HTTP request
+        var requestOptions = {
+            method: 'POST',
+            mode: 'cors', // no-cors, *cors, same-origin
+            headers: myHeaders,
+            body: image_json,
+            redirect: 'follow'
+        };
+
+        fetch("https://australia-southeast1-fit3164-group-1.cloudfunctions.net/auth-google-service-account", requestOptions)
+            //.then(response => response.text())
+            .then(result => result.json())
+            .then(data => console.log(data))
+            .catch(error => console.log('error', error));
     };
     reader.readAsDataURL(uploadedImage);
-	}
+}
