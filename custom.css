@@ -69,9 +69,16 @@
 	overflow-y:scroll;
 }
 
-.p1 {
-	font-size: 1.5rem;
-	line-height: 2.25rem;
-	color: white;
-	padding-top: 10px;
+.ul {
+	list-style-type:none;
+}
+
+#history_list {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	vertical-align: middle;
+	line-height: 100px;
+	height: 100px;
 }
