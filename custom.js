@@ -34,16 +34,16 @@ function defaultTab() {
 function convert_b64(image) {
 	// Convert uploaded image to Base64
     var reader = new FileReader();
-	var image_base64 = reader.result;
+	var image_base64 = "";
     reader.onload = function() {
 		image_base64 = reader.result.replace(/data:image.*?;base64,/, "");
         image_base64 = image_base64.replace(/\+/g, '-');
         image_base64 = image_base64.replace(/\//g, '_');
         image_base64 = image_base64.replace(/\=+$/, '');
 		console.log("Image converted to Base64: " + image_base64)
+		to_json(image_base64);
 	};
     reader.readAsDataURL(image);
-	to_json(image_base64)
 };
 
 
@@ -52,37 +52,70 @@ function to_json(image_b64) {
 	var myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 
-	var image_json = JSON.stringify(
-	{
+	var image_json = JSON.stringify({
 		"instances": [
-		[String(image_b64)]
+			[String(image_b64)]
 		]
-	}
-	)
-	http_request(image_json, myHeaders)
+	});
+	http_request(image_b64, image_json, myHeaders)
 };
 	
 	
 // Send HTTP Request
-function http_request(json, myHeaders) {
+function http_request(image_b64, json, myHeaders) {
     var requestOptions = {
         method: 'POST',
 		mode: 'cors', // no-cors, *cors, same-origin
         headers: myHeaders,
         body: json,
         redirect: 'follow'
-      };
+    };
       
-      fetch("https://australia-southeast1-fit3164-group-1.cloudfunctions.net/auth-google-service-account", requestOptions)
+    fetch("https://australia-southeast1-fit3164-group-1.cloudfunctions.net/auth-google-service-account", requestOptions)
         //.then(response => response.text())
         .then(result => result.json())
-		.then(data => console.log(data))
+		//.then(data => console.log(data))
+		.then(data => result(image_b64, data.predictions[0][0]))
         .catch(error => console.log('error', error));
-	
+		
 };
 
+// Output result
+function result(image_b64, prediction) {
+	percent = prediction * 100;
+	percent = percent.toPrecision(4);
+	percent = String(percent) + '%'
+	var image_type = ""
+	if (prediction >= 0.5){
+		console.log('MSS', percent);
+		image_type = 'MSS';
+		document.getElementById('image_type').innerHTML = "MSS";
+		document.getElementById('image_percent').innerHTML = percent;
+	} else {
+		console.log('MSI', percent);
+		image_type = 'MSI';
+		document.getElementById('image_type').innerHTML = "MSI";
+		document.getElementById('image_percent').innerHTML = percent;
+	}
+	add_history(image_b64, image_type, percent)
 
+};
+
+// Add to prediction History
+function add_history(base64, type, percent) {
+	const para_type = document.createElement("p");
+	const node_type = document.createTextNode('<br><br>'+String(type));
+	para_type.appendChild(node_type);
+	const element_type = document.getElementById("history_type");
+	//element_type.appendChild(para_type);
 	
+	const para_percent = document.createElement("p");
+	const node_percent = document.createTextNode('<br><br>'+String(percent));
+	para_percent.appendChild(node_percent);
+	const element_percent = document.getElementById("history_percent");
+	//element_percent.appendChild(node_percent);
+	
+};
 	
 // Predict image 1
 function predict_image_1() {

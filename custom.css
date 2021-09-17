@@ -64,3 +64,14 @@
 #carousel-6:checked~.control-6~.carousel-indicators li:nth-child(6) .carousel-bullet {
     color: #000000;
 }
+
+#pred_window {
+	overflow-y:scroll;
+}
+
+.p1 {
+	font-size: 1.5rem;
+	line-height: 2.25rem;
+	color: white;
+	padding-top: 10px;
+}
