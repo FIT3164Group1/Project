@@ -158,6 +158,16 @@ function add_history(type, percent) {
 	li_percent.appendChild(document.createTextNode(String(percent)));
 	ul_percent.appendChild(li_percent);
 	
+	// Reverse order
+	var i = ul_time.childNodes.length;
+	while (i--) {
+		ul_time.appendChild(ul_time.childNodes[i]);
+		ul_image.appendChild(ul_image.childNodes[i]);
+		ul_type.appendChild(ul_type.childNodes[i]);
+		ul_percent.appendChild(ul_percent.childNodes[i]);
+	}
+		
+	
 };
 	
 // Predict image 1
