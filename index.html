@@ -91,7 +91,7 @@
 						</p>
 					</div>
 					<div class="w-full justify-center overflow-hidden flex">
-						<input id='upload_file' type='file' accept=".png, .jpg, .jpeg" onchange="convert_b64(this.files[0]);" hidden/>
+						<input id='upload_file' type='file' accept=".png, .jpg, .jpeg" onchange="image_upload(this.files[0]);" hidden/>
 						<!-- Hidden upload button; click this when below button is clicked -->
 						<button id="upload_button" class="block bg-gray-500 rounded text-white p-4 text-2xl" onclick="getElementById('upload_file').click()">Upload Image</button>
 					</div>
@@ -473,8 +473,8 @@
 					<div class="flex flex-wrap -m-2">
 					  <div class="p-2 w-1/2">
 						<div class="relative">
-						  <label for="name" class="leading-7 text-2xl font-sans text-white" style="height:50px">Name</label>
-						  <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+						  <label for="name" class="leading-7 text-2xl font-sans text-white" style="height:50px">Subject</label>
+						  <input type="text" id="subject" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
 						</div>
 					  </div>
 					  <div class="p-2 w-1/2">
@@ -490,7 +490,7 @@
 						</div>
 					  </div>
 					  <div class="p-2 w-full">
-						<button class="flex mx-auto text-white bg-indigo-500 border-0 py-4 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send</button>
+						<button class="flex mx-auto text-white bg-indigo-500 border-0 py-4 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onclick="send_mail();">Send</button>
 					  </div>
 					  <div class="p-2 w-full pt-8 mt-8 border-t border-white-200 text-center">
 						<a class="text-indigo-500">lewislqac1@email.com</a>
