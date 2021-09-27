@@ -1,14 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ESLintPlugin = require('eslint-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+    // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+    // const ESLintPlugin = require('eslint-webpack-plugin')
 
 const webpackConfig = {
-    mode: 'production',
+    mode: 'development',
     target: ['web'],
     entry: {
         main: path.resolve(__dirname, './src/js/main.js'),
@@ -16,6 +16,7 @@ const webpackConfig = {
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
+        assetModuleFilename: 'images/[hash][ext][query]'
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -27,9 +28,9 @@ const webpackConfig = {
         new webpack.HotModuleReplacementPlugin(),
         // new BundleAnalyzerPlugin(),
         new MiniCssExtractPlugin({ filename: "styles.css" }),
-        new ESLintPlugin({
-            files: 'src/**/*.js',
-        })
+        // new ESLintPlugin({
+        //     files: 'src/**/*.js',
+        // })
     ],
     devServer: {
         watchFiles: [path.resolve(__dirname, './dist'), path.resolve(__dirname, './')],
@@ -55,9 +56,14 @@ const webpackConfig = {
                 include: path.resolve(__dirname, 'src/css'),
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
             },
+            // Images
+            {
+                test: /\.(png|svg|jpg|jpeg|gif|)$/i,
+                type: 'asset/resource',
+            }
         ],
     },
 
 }
 
-module.exports = webpackConfig;
+module.exports = webpackConfig
