@@ -1,503 +1,525 @@
-
 <!DOCTYPE html>
 <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
-	<head>
-	<title>Gastrointestinal Cancer Prediction</title>
-	<!--tailwind css and js-->
-	<!--link to tailwind css-->
-	<link rel="stylesheet" type="text/css" href="tailwind.css">
-	<!--link to tailwind javascript-->
-	<script src="tailwind.config.js"></script>
-	
-	<!--other css and js-->
-	<!--link to css-->
-	<link rel="stylesheet" type="text/css" href="custom.css">
-	<!--link to javascript-->
-	<script src="custom.js"></script>
-	
-	<!--link to carousel-->
-	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-	</head>
 
-	<!--tabs (tabs are shown in reverse order) -->
-	<body onload="defaultTab()">
-	<div class="bar">
-		<button class="bar_button" onclick="openTab(event, 'Contact')">Contact</button>
-		<button class="bar_button" onclick="openTab(event, 'About')">About</button>
-		<button class="bar_button" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
-	</div>
+<head>
+    <title>Gastrointestinal Cancer Prediction</title>
+    <!--tailwind css and js-->
+    <!--link to tailwind css-->
+    <link rel="stylesheet" type="text/css" href="tailwind.css">
+    <!--link to tailwind javascript-->
+    <script src="tailwind.config.js"></script>
 
-		
-	<div id="Home" class="tabcontent">
-		<hr>
-		<section>
-			<div class="flex flex-wrap overflow-hidden font-sans bg-red-400">
-				<div class="w-3/5 overflow-hidden text-center text-white">
-					<p class="font-sans p-10 pt-20 text-6xl">
-						<b>Gastrointestinal Cancer Prediction</b>
-					</p>
-				</div>
-				<div class="w-2/5 p-20 align-middle text-white">
-					<div class="flex flex-wrap overflow-hidden">
-						<div class="w-full pt-10 overflow-hidden">
-							<p class="font-sans p-2 text-3xl">
-								<b><u>GOAL</b></u>
-							</p>
-						</div>
-						<div class="w-full overflow-hidden">
-							<p class="font-sans p-2 text-xl">
-								Utilise our cancer prediction model with your own histological image.
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="w-3/5 place-self-center p-10" style="height:400px">
-					<img class="mx-auto" src="https://source.unsplash.com/LnvCEXQwC-o/600x300"></image>
-				</div>
-				<div class="w-2/5 p-20 align-middle text-white">
-					<div class="flex flex-wrap overflow-hidden">
-						<div class="w-full overflow-hidden">
-							<p class="font-sans p-2 text-3xl">
-								<b><u>STRATEGY</b></u>
-							</p>
-						</div>
-						<div class="w-full overflow-hidden">		
-							<p class="font-sans p-2 text-xl">
-								We create a classfication model to identify between the two 
-								possible categories MSS and MSIMUS (MSI) of cancer.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!--other css and js-->
+    <!--link to css-->
+    <link rel="stylesheet" type="text/css" href="custom.css">
+    <!--link to javascript-->
+    <script src="custom.js"></script>
 
-		<hr>
-		<section>
-			<div class="flex flex-wrap overflow-hidden bg-gray-400" style="height:1250px">
+    <!--link to carousel-->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+</head>
 
-				<div class="w-full text-center overflow-hidden" style="height:100px">
-				</div>
-				<div class="w-full text-center overflow-hidden" style="height:200px">
-					<p class="font-sans text-white font-bold text-5xl">
-						Upload Image
-					</p>
-				</div>
+<!--tabs (tabs are shown in reverse order) -->
 
-				<div class="w-full overflow-hidden items-center flex flex-wrap" style="height:200px">
-					<div class="w-full overflow-hidden">
-						<p class="font-sans text-white text-center">
-							Upload your own image to see the prediction result.
-						</p>
-					</div>
-					<div class="w-full justify-center overflow-hidden flex">
-						<input id='upload_file' type='file' accept=".png, .jpg, .jpeg" onchange="image_upload(this.files[0]);" hidden/>
-						<!-- Hidden upload button; click this when below button is clicked -->
-						<button id="upload_button" class="block bg-gray-500 rounded text-white p-4 text-2xl" onclick="getElementById('upload_file').click()">Upload Image</button>
-					</div>
-				</div>
-				<!-- spacing div-->
-				<div class="w-full text-center overflow-hidden" style="height:100px">
-				</div>
-				<div class="w-full text-center overflow-hidden" style="height:160px">
-					<p class="font-sans text-white pb-10 font-bold text-5xl">
-						Don't have an image? Try a sample image!
-					</p>
-				</div>
-				<div class="w-full text-center overflow-hidden" style="height:440px">
-					<div class="carousel relative rounded relative overflow-hidden w-1/2 mx-auto" style="height:440px">
-						<div class="carousel-inner relative overflow-hidden w-full" style="height:440px">
-							<!--Slide 1-->
-							<input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-							<div class="carousel-item absolute opacity-0 flex flex-wrap overflow-hidden">
-								<div class="w-full justify-center text-center overflow-hidden pt-5 pb-5" style="height:140px">
-									<button id="predict_button_1" class="block bg-gray-500 rounded text-white p-4 text-2xl mx-auto" onclick="predict_image_1()">Predict Image</button>
-								</div>
-								<div class="w-full justify-center overflow-hidden" style="height:300px">
-									<img class="mx-auto" src="images/msi1.png"></image>
-								</div>
-							</div>
-							<label for="carousel-6"
-								class="control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
-								class="fas fa-angle-left mt-3"></i></label>
-							<label for="carousel-2"
-								class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
-								class="fas fa-angle-right mt-3"></i></label>
-					  
-							<!--Slide 2-->
-							<input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-							<div class="carousel-item absolute opacity-0 flex flex-wrap overflow-hidden">
-								<div class="w-full justify-center text-center overflow-hidden pt-5 pb-5" style="height:140px">
-									<button id="predict_button_2" class="block bg-gray-500 rounded text-white p-4 text-2xl mx-auto" onclick="predict_image_2()">Predict Image</button>
-								</div>
-								<div class="w-full justify-center overflow-hidden" style="height:300px">
-									<img class="mx-auto" src="images/mss1.png"></image>
-								</div>
-							</div>
-							<label for="carousel-1"
-								class="control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
-								class="fas fa-angle-left mt-3"></i></label>
-							<label for="carousel-3"
-								class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
-								class="fas fa-angle-right mt-3"></i></label>
-					  
-							<!--Slide 3-->
-							<input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-							<div class="carousel-item absolute opacity-0 flex flex-wrap overflow-hidden">
-								<div class="w-full justify-center text-center overflow-hidden pt-5 pb-5" style="height:140px">
-									<button id="predict_button_3" class="block bg-gray-500 rounded text-white p-4 text-2xl mx-auto" onclick="predict_image_3()">Predict Image</button>
-								</div>
-								<div class="w-full justify-center overflow-hidden" style="height:300px">
-									<img class="mx-auto" src="images/msi2.png"></image>
-								</div>
-							</div>
-							<label for="carousel-2"
-								class="control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
-								class="fas fa-angle-left mt-3"></i></label>
-							<label for="carousel-4"
-								class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
-								class="fas fa-angle-right mt-3"></i></label>
-								
-							<!--Slide 4-->
-							<input class="carousel-open" type="radio" id="carousel-4" name="carousel" aria-hidden="true" hidden="">
-							<div class="carousel-item absolute opacity-0 flex flex-wrap overflow-hidden">
-								<div class="w-full justify-center text-center overflow-hidden pt-5 pb-5" style="height:140px">
-									<button id="predict_button_4" class="block bg-gray-500 rounded text-white p-4 text-2xl mx-auto" onclick="predict_image_4()">Predict Image</button>
-								</div>
-								<div class="w-full justify-center overflow-hidden" style="height:300px">
-									<img class="mx-auto" src="images/mss2.png"></image>
-								</div>
-							</div>
-							<label for="carousel-3"
-								class="control-4 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
-								class="fas fa-angle-left mt-3"></i></label>
-							<label for="carousel-5"
-								class="next control-4 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
-								class="fas fa-angle-right mt-3"></i></label>
-								
-							<!--Slide 5-->
-							<input class="carousel-open" type="radio" id="carousel-5" name="carousel" aria-hidden="true" hidden="">
-							<div class="carousel-item absolute opacity-0 flex flex-wrap overflow-hidden">
-								<div class="w-full justify-center text-center overflow-hidden pt-5 pb-5" style="height:140px">
-									<button id="predict_button_5" class="block bg-gray-500 rounded text-white p-4 text-2xl mx-auto" onclick="predict_image_5()">Predict Image</button>
-								</div>
-								<div class="w-full justify-center overflow-hidden" style="height:300px">
-									<img class="mx-auto" src="images/msi3.png"></image>
-								</div>
-							</div>
-							<label for="carousel-4"
-								class="control-5 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
-								class="fas fa-angle-left mt-3"></i></label>
-							<label for="carousel-6"
-								class="next control-5 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
-								class="fas fa-angle-right mt-3"></i></label>
-					  
-							<!--Slide 6-->
-							<input class="carousel-open" type="radio" id="carousel-6" name="carousel" aria-hidden="true" hidden="">
-							<div class="carousel-item absolute opacity-0 flex flex-wrap overflow-hidden">
-								<div class="w-full justify-center text-center overflow-hidden pt-5 pb-5" style="height:140px">
-									<button id="predict_button_6" class="block bg-gray-500 rounded text-white p-4 text-2xl mx-auto" onclick="predict_image_6()">Predict Image</button>
-								</div>
-								<div class="w-full justify-center overflow-hidden" style="height:300px">
-									<img class="mx-auto" src="images/mss3.png"></image>
-								</div>
-							</div>
-							<label for="carousel-5"
-								class="control-6 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
-								class="fas fa-angle-left mt-3"></i></label>
-							<label for="carousel-1"
-								class="next control-6 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-red-400 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
-								class="fas fa-angle-right mt-3"></i></label>
-					  
-					  
-							<!-- Add additional indicators for each slide-->
-							<ol class="carousel-indicators">
-								<li class="inline-block mr-3">
-									<label for="carousel-1"
-										class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-red-400">•</label>
-								</li>
-								<li class="inline-block mr-3">
-									<label for="carousel-2"
-										class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-red-400">•</label>
-								</li>
-								<li class="inline-block mr-3">
-									<label for="carousel-3"
-										class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-red-400">•</label>
-								</li>
-								<li class="inline-block mr-3">
-									<label for="carousel-4"
-										class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-red-400">•</label>
-								</li>
-								<li class="inline-block mr-3">
-									<label for="carousel-5"
-										class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-red-400">•</label>
-								</li>
-								<li class="inline-block mr-3">
-									<label for="carousel-6"
-										class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-red-400">•</label>
-								</li>
-							</ol>
-						</div>
-						<div>
-							
-						</div>
-						
-					</div>
-				</div>
-				<!-- spacing div-->
-				<div class="w-full text-center overflow-hidden" style="height:50px">
-				</div>
-			</div>
-		</section>
+<body onload="defaultTab()">
+    <div class="bar">
+        <button class="bar_button" onclick="openTab(event, 'Contact')">Contact</button>
+        <button class="bar_button" onclick="openTab(event, 'About')">About</button>
+        <button class="bar_button" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
+    </div>
 
-		<hr>
-		<section>
-			<div class="flex flex-wrap overflow-hidden bg-red-400" style="height:600px">
-				<div class="w-full h-1/3 flex items-center justify-center overflow-hidden">
-					<p class="font-sans text-white text-4xl">
-						<b>Prediction Results</b>
-					</p>
-				</div>
-				<div class="w-full h-2/3 text-center flex items-center pb-20 justify-center overflow-hidden">
-					<div class="flex flex-wrap overflow-hidden">
-						<div class="w-60 overflow-hidden">
-							<p class="font-sans text-white p-10 float-right text-3xl">
-								Type:
-							</p>
-							<p class="font-sans text-white p-10 float-right text-3xl">
-								Percentage:
-							</p>
-						</div>
-						<div class="w-60 overflow-hidden">
-							<p id="image_type" class="w-full font-sans text-white p-10 float-left font-bold text-3xl">
-								---
-							</p>
-							<p id="image_percent" class="w-full font-sans text-white p-10 float-left font-bold text-3xl">
-								---
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
-		<hr>
-		<section>
-			<div class="flex flex-wrap overflow-hidden bg-gray-400" style="height:1000px">
-				<div class="w-full flex items-center justify-center overflow-hidden" style="height:180px">
-					<div class="w-full flex flex-wrap overflow-hidden">
-						<div class="m-auto overflow-hidden">
-							<p class="font-sans pt-10 pb-10 text-white text-4xl">
-								<b>Prediction History</b>
-							</p>
-						</div>
-						<!-- horizontal straight line -->
-						<div class="w-full overflow-hidden border-2 border-white">
-						</div>
-					</div>
-				</div>
-				<div class="mx-auto w-3/4 text-center flex flex-wrap items-center pb-20 justify-center overflow-hidden" style="height:820px">
-					<div class="w-full flex flex-wrap overflow-hidden" style="height:120px">
-						<!-- Time -->
-						<div class="w-2/12 overflow-hidden">
-							<p class="text-center items-center justify-center font-sans pt-5 text-white text-3xl">Time</p>
-						</div>
-						<!-- Image-->
-						<div class="w-4/12 overflow-hidden">
-							<p class="text-center items-center justify-center font-sans pt-5 text-white text-3xl">Image</p>
-						</div>
-						<!-- Type-->
-						<div class="w-3/12 overflow-hidden">
-							<p class="text-center items-center justify-center font-sans pt-5 text-white text-3xl">Type</p>
-						</div>
-						<!-- Prediction-->
-						<div class="w-3/12 overflow-hidden">
-							<p class="text-center items-center justify-center font-sans pt-5 text-white text-3xl">Percentage</p>
-						</div>
-					</div>
-					<div id="pred_window" class="w-full flex flex-wrap overflow-hidden" style="height:700px">
-						<!-- Time -->
-						<div class="w-2/12 overflow-hidden">
-							<ul id="history_time" class="text-center items-center justify-center font-sans pt-5 text-white text-2xl"></ul>
-						</div>
-						<!-- Image-->
-						<div class="w-4/12 overflow-hidden">
-							<ul id="history_image" class="text-center items-center justify-center font-sans pt-5 text-white text-2xl"></ul>
-						</div>
-						<!-- Type-->
-						<div class="w-3/12 overflow-hidden">
-							<ul id="history_type" class="text-center items-center justify-center font-sans pt-5 text-white text-2xl"></ul>
-						</div>
-						<!-- Prediction-->
-						<div class="w-3/12 overflow-hidden">
-							<ul id="history_percent" class="text-center items-center justify-center font-sans pt-5 text-white text-2xl"></ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
-	
-	<div id="About" class="tabcontent" style="height:4500px">
-		
-		<div class="bg-red-400" style="height:4456px">
-			<div class="flex flex-wrap overflow-hidden p-20 pl-20 pr-20">
-				<div class="w-full overflow-hidden text-center">
-				<!-- Title 1 -->
-					<p class="font-sans p-5 text-white text-5xl">
-						Gastrointestinal cancers
-					</p>
-				</div>
+    <div id="Home" class="tabcontent">
+        <hr>
+        <section>
+            <div class="flex flex-wrap overflow-hidden font-sans bg-red-400">
+                <div class="w-3/5 overflow-hidden text-center text-white">
+                    <p class="p-10 pt-20 font-sans text-6xl">
+                        <b>Gastrointestinal Cancer Prediction</b>
+                    </p>
+                </div>
+                <div class="w-2/5 p-20 text-white align-middle">
+                    <div class="flex flex-wrap overflow-hidden">
+                        <div class="w-full pt-10 overflow-hidden">
+                            <p class="p-2 font-sans text-3xl">
+                                <b><u>GOAL</b></u>
+                            </p>
+                        </div>
+                        <div class="w-full overflow-hidden">
+                            <p class="p-2 font-sans text-xl">
+                                Utilise our cancer prediction model with your own histological image.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-3/5 p-10 place-self-center" style="height:400px">
+                    <img class="mx-auto" src="https://source.unsplash.com/LnvCEXQwC-o/600x300"></image>
+                </div>
+                <div class="w-2/5 p-20 text-white align-middle">
+                    <div class="flex flex-wrap overflow-hidden">
+                        <div class="w-full overflow-hidden">
+                            <p class="p-2 font-sans text-3xl">
+                                <b><u>STRATEGY</b></u>
+                            </p>
+                        </div>
+                        <div class="w-full overflow-hidden">
+                            <p class="p-2 font-sans text-xl">
+                                We create a classfication model to identify between the two possible categories MSS and MSIMUS (MSI) of cancer.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-				<div class="w-full overflow-hidden">
-				<!-- Content 1-->
-					<p class="font-sans p-10 pb-20 text-white text-xl text-justify">
-						Immunotherapy treatment is responsible for a significant reduction in cancer patient mortality and is a cornerstone of cancer therapy (Kather & et al, 2019, 1). However gastro-intestinal cancer patients tend not to benefit from the treatment, as other solid malignant tumor cancer patients might, unless the tumor belongs to the group Microsatellite Instable (MSI) (Kather & et al, 2019, 1). This group accounts for approximately 15% of gastric adreno-carcinomas and colorectal cancers, with the remaining 85% being Microsatellite Stable (MSS) tumors. Currently most gastro-intestinal cancer patients are not tested to determine if their tumor falls within the MSI group as to do so requires extensive immunohistochemistry and genetic analysis (Kather & et al, 2019, 1). 
-						<br><br>The current process for patients to achieve a MSI cancer-type diagnosis (and immunotherapy treatment) requires extensive immunohistochemistry and genetic testing (Kather & et al, 2019). Furthermore, analysis of this testing is typically conducted by a human pathologist with domain expertise. These extra requirements and associated time delays reduce screening of patients for MSI-type cancer. Accordingly, a significant portion of the 15% of gastro-intestinal cancer patients may not be offered timely and potentially life-saving immunotherapy treatment (Kather & et al, 2019).
-						<br><br>We aim to develop an accurate model that can assist medical professionals in achieving MSI cancer diagnoses for patients. Thereby increasing access and use of critical immunotherapy treatments. This model will receive a haematoxylin and eosin (H&E) stained histology image tile. Convolutional Neural Networks (CNNs) such as VGGNet and ResNet will be used to extract relevant features from the cell microstructures present in the images. These structures are generally indistinguishable by the human eye. The features will then be fed through a classifier such as Fully-Connected Neural Network with Soft-Max Function, Decision Tree, Random Forest or Support Vector Machine. Returning a classification prediction for MSI and MSS-type cancer.
-					</p>
-				</div>
+        <hr>
+        <section>
+            <div class="flex flex-wrap overflow-hidden bg-gray-400" style="height:1250px">
 
-				<div class="w-full overflow-hidden text-center">
-				<!-- Title 2 -->
-					<p class="font-sans p-5 text-white text-5xl">
-						Deep learning models
-					</p>
-				</div>
+                <div class="w-full overflow-hidden text-center" style="height:100px">
+                </div>
+                <div class="w-full overflow-hidden text-center" style="height:200px">
+                    <p class="font-sans text-5xl font-bold text-white">
+                        Upload Image
+                    </p>
+                </div>
 
-				<div class="w-full overflow-hidden">
-				<!-- Content 2-->
-					<p class="font-sans p-10 pb-20 text-white text-xl text-justify">
-						Deep learning models are generally more accurate than machine learning approaches when performing image classification (O'Mahony, 2019). This is partly due to deep learning’s ability to generalise when presented with new information and infer features from provided data (O'Mahony, 2019). Whereas machine learning approaches require developers to manually extract and weight relevant feature descriptors (Li et al., 2014, 844; O'Mahony, 2019). Similarly, deep learning models are generally more accurate than human domain experts when classifying medical images.
-						<br><br>Neural networks distinct advantages arise from their ability to generalise solutions to different types of problems using similar designs (Li et al., 2014, 844). In image classification problems, image pixels within red, green and blue (RGB) channels can be used directly as input to standard feed-forward neural networks. The neural network learns the correct classification from this raw image pixel data. However, even small image tiles may contain thousands of pixels, resulting in very large numbers of connections between nodes and millions of weights to calculate (Li et al., 2014, 845). 
-						<br><br>In contrast, CNN models combine weights into small kernel filters that dramatically simplifies the learning model. Focusing learning on features extracted by convolutions, rather than raw pixel data. CNN networks are a successful attempt to model humans’ visual cortex architecture using neural networks (Li et al., 2014, 844). They are much faster and more robust than traditional feed-forward neural networks (Li et al., 2014, 845). Consequently, research based on CNNs has significantly improved classification accuracy for image databases including the MNIST and NORB databases, and the CIFAR10 dataset (Li et al., 2014, 844).
-						<br><br>A typical CNN consists of a series of connected blocks comprising convolutional, pooling and fully-connected layers enabling feature extraction and classification (Talo, 2019, 3) (see Figure 1). Different CNN architectures uniquely order and connect these blocks and layers to produce novel new learning capabilities. AlexNet, one of the first implementations of CNNs, comprises 11 layers: 5 convolutional layers, 3 pooling/down-sampling layers and 3 fully-connected layers. VGGNet-16, another well-known CNN, has 13 convolutional layers, 5 pooling/down-sampling layers and 3 fully-connected layers.
-					</p>
-					<img class="mx-auto" src="images/CNN_diagram.jpeg" width:"800" height:"300" ></image>
-					<p class="font-sans p-5 text-white text-base text-center">
-						Figure 1: Convolution Neural Network architecture diagram (Saha, 2018).
-					</p>
-					<p class="font-sans p-10 pb-20 text-white text-xl text-justify">
-						Modern CNN architectures tend to be deeper than shallow architectures and use progressively more complex connections across alternating layers (Talo, 2019, 3). ResNet CNN architecture introduced residual connections to avoid information loss during training of deep networks, such as a 1001-layer deep CNN model  (Talo, 2019, 3). The DenseNet CNN architecture was built with structures connecting each layer to subsequent layers. Important features learned by any DenseNet layer could then be shared within the network (Talo, 2019, 3).
-					</p>
-				</div>
+                <div class="flex flex-wrap items-center w-full overflow-hidden" style="height:200px">
+                    <div class="w-full overflow-hidden">
+                        <p class="font-sans text-center text-white">
+                            Upload your own image to see the prediction result.
+                        </p>
+                    </div>
+                    <div class="flex justify-center w-full overflow-hidden">
+                        <input id='upload_file' type='file' accept=".png, .jpg, .jpeg" onchange="image_upload(this.files[0]);" hidden/>
+                        <!-- Hidden upload button; click this when below button is clicked -->
+                        <button id="upload_button" class="block p-4 text-2xl text-white bg-gray-500 rounded" onclick="getElementById('upload_file').click()">Upload Image</button>
+                    </div>
+                </div>
+                <!-- spacing div-->
+                <div class="w-full overflow-hidden text-center" style="height:100px">
+                </div>
+                <div class="w-full overflow-hidden text-center" style="height:160px">
+                    <p class="pb-10 font-sans text-5xl font-bold text-white">
+                        Don't have an image? Try a sample image!
+                    </p>
+                </div>
+                <div class="w-full overflow-hidden text-center" style="height:440px">
+                    <div class="relative w-1/2 mx-auto overflow-hidden rounded carousel" style="height:440px">
+                        <div class="relative w-full overflow-hidden carousel-inner" style="height:440px">
+                            <!--Slide 1-->
+                            <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+                            <div class="absolute flex flex-wrap overflow-hidden opacity-0 carousel-item">
+                                <div class="justify-center w-full pt-5 pb-5 overflow-hidden text-center" style="height:140px">
+                                    <button id="predict_button_1" class="block p-4 mx-auto text-2xl text-white bg-gray-500 rounded" onclick="predict_image_1()">Predict Image</button>
+                                </div>
+                                <div class="justify-center w-full overflow-hidden" style="height:300px">
+                                    <img class="mx-auto" src="images/msi1.png"></image>
+                                </div>
+                            </div>
+                            <label for="carousel-6" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer control-1 md:ml-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-left"></i></label>
+                            <label for="carousel-2" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-1 md:mr-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-right"></i></label>
 
-				<div class="w-full overflow-hidden text-center">
-				<!-- Title 3 -->
-					<p class="font-sans p-5 text-white text-5xl">
-						Training dataset
-					</p>
-				</div>
+                            <!--Slide 2-->
+                            <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+                            <div class="absolute flex flex-wrap overflow-hidden opacity-0 carousel-item">
+                                <div class="justify-center w-full pt-5 pb-5 overflow-hidden text-center" style="height:140px">
+                                    <button id="predict_button_2" class="block p-4 mx-auto text-2xl text-white bg-gray-500 rounded" onclick="predict_image_2()">Predict Image</button>
+                                </div>
+                                <div class="justify-center w-full overflow-hidden" style="height:300px">
+                                    <img class="mx-auto" src="images/mss1.png"></image>
+                                </div>
+                            </div>
+                            <label for="carousel-1" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer control-2 md:ml-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-left"></i></label>
+                            <label for="carousel-3" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-2 md:mr-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-right"></i></label>
 
-				<div class="w-full overflow-hidden">
-				<!-- Content 3-->
-					<p class="font-sans p-10 pb-10 text-white text-xl">
-						The dataset contains approx. 192,000 224x244px tile images (Kather, 2019). Each image displays a Formalin-Fixed Paraffin-Embedded tissue sample originally captured as a Whole Slide Image (WSI) (Kather, 2019; Talo, 2019, 1). These WSIs have been cropped and split into tiles to reduce image size. As model size and memory requirements exponentially increase with image dimensions (Li et al., 2014, 845). These samples have been stained to reveal high-level structures and histologies (Kather, 2019; Talo, 2019, 1). The structures are generally analysed by pathologists for morphological characteristics (Talo, 2019, 1). With MSI classification depending on the presence of instability in these structures (Kather & et al, 2019). This dataset is therefore well-suited to CNN-type deep learning models (Li et al., 2014, 844).
-					</p>
-					<img class="mx-auto" src="images/dataset_example_images.JPG" ></image>
-					<p class="font-sans p-5 pb-20 text-white text-base text-center">
-							Figure 2: Example H&E stained tile images from proposed dataset (Kather, 2019)
-					</p>
-				</div>
-				
-				<div class="w-full overflow-hidden text-center">
-				<!-- Title 4 -->
-					<p class="font-sans p-5 text-white text-5xl">
-						Prediction methodology
-					</p>
-				</div>
+                            <!--Slide 3-->
+                            <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+                            <div class="absolute flex flex-wrap overflow-hidden opacity-0 carousel-item">
+                                <div class="justify-center w-full pt-5 pb-5 overflow-hidden text-center" style="height:140px">
+                                    <button id="predict_button_3" class="block p-4 mx-auto text-2xl text-white bg-gray-500 rounded" onclick="predict_image_3()">Predict Image</button>
+                                </div>
+                                <div class="justify-center w-full overflow-hidden" style="height:300px">
+                                    <img class="mx-auto" src="images/msi2.png"></image>
+                                </div>
+                            </div>
+                            <label for="carousel-2" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer control-3 md:ml-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-left"></i></label>
+                            <label for="carousel-4" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-3 md:mr-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-right"></i></label>
 
-				<div class="w-full overflow-hidden">
-				<!-- Content 4-->
-					<p class="font-sans p-10 pb-20 text-white text-xl text-justify">
-						Pre-processing is highly relevant to improving dataset robustness and model accuracy.  For image classification tasks this generally involves colour normalisation, resizing, randomisation, and segregation. This dataset has been pre-processed prior to being made publicly available. The tile images have been colour normalised according to the Mackenko method (Kather, 2019, Macenko et al., 2009) - removing inconsistencies and bringing each WSI into a common normalised space (Macenko et al., 2009). The tile images have been resized to a common 244x244px dimension - a common default input dimension for many CNNs (Siu et al., 2018, 4-5). The data has been segregated into two sets containing 70% training data and 30% test data. Images have been randomly assigned into these sets per patient, not per tile, preserving testing integrity (Kather, 2019). Finally, equilibration of training set data was achieved by randomly undersampling the MSS-type class which contained more image tiles than MSI-type (Kather, 2019).
-						<br><br>Various training approaches have been developed to balance pre-trained and custom CNNs trade-offs, including transfer learning and fine-tuning. 
-						<br><br>The transfer learning technique involves ‘freezing’ the convolutional base and removing the pre-trained classification layers (Shin et al., 2016). The remaining convolutional layers are used as a feature extractor for the new classifier trained on our dataset (Talo, 2019, 3; Shin et al., 2016). For image classification tasks, the standard approach is to use a stack of fully-connected neural network layers followed by a Soft-Max activation layer (Marcelino, 2018). The Soft-Max layer outputs the probability distribution for the MSI and MSS-type cancer classes. Classification then occurs according to the most probable class (Marcelino, 2018).
-						<br><br>Using the transfer learning technique we may transfer the knowledge (i.e. weights) of the basic structures learned in the CNNs initial layers to the new classifier  (Talo, 2019, 3; Shin et al., 2016). The essential structures that pre-trained CNN models have learned to identify different objects in databases such as ImageNet can be used to classify WSI histologies (Talo, 2019, 3; Shin et al., 2016). This technique therefore accelerates the training and development process for new CNN models and classification tasks.
-						<br><br>Given our dataset is quite large (with approx. 192,000 tile images) we may also choose to ‘unfreeze’ some convolutional layers in the pre-trained CNN during training (Marcelino, 2018). This process is referred to as fine-tuning the CNN model. Convolutional layers generally extract either low-level features that are generic and problem independent, and high-level features specific to the image classification problem (Mikołajczyk & Grochowski, 2018, 3). By unfreezing some of these layers, we can allow our CNN to learn the high-level features specific to our dataset. This affects the CNNs generalising capability but improves classification accuracy for our specific classes.
-						<br><br>Importantly however, we must be careful when adjusting the learning rate used in the unfrozen convolutional layers (Marcelino, 2018). The learning rate is a hyper-parameter controlling adjustment of weights within the CNN. When using a pre-trained CNN model it is beneficial to retain a small learning rate to prevent losing previous knowledge. Considering most pre-trained CNNs are trained on massive datasets, keeping a small learning rate will ensure that the CNNs useful pre-trained low-level feature extraction weights are not distorted too soon or too much during fine-tuning (Marcelino, 2018). 
-						<br><br>Augmenting training datasets can improve CNNs classification accuracy (Mikołajczyk & Grochowski, 2018; Heidari et al., 2020; Taylor & Nitschke, 2017). Augmentation generally involves applying combinations of simple affine transformations such as rotation, reflection, shearing, and zooming to images (Mikołajczyk & Grochowski, 2018, 2). Geometric augmentations may also be used to broaden a dataset, though these are still the subject of research (Mikołajczyk & Grochowski, 2018, 2). These augmentations include increasing image contrast, white balance, sharpening, and histogram equalisation (Mikołajczyk & Grochowski, 2018, 2). The total dataset is artificially inflated by these combined augmentations (Taylor & Nitschke, 2017). This improves CNNs ability to generalise against unseen data. Reducing the over-fitting effect that occurs during fine-tuning (Taylor & Nitschke, 2017).
-					</p>
-					<img class="mx-auto" src="images/data_aug_methods_combined.JPG" ></image>
-					<p class="font-sans p-5 text-white text-base text-center">
-							Figure 3: Data augmentation methods applied to melanoma tile images (Mikołajczyk & Grochowski, 2018).
-					</p>
-					<p class="font-sans p-10 pb-20 text-white text-xl text-justify">
-						<!-- Do not delete, required for proper spacing, if text needed here then add here-->
-					</p>
-				</div>
+                            <!--Slide 4-->
+                            <input class="carousel-open" type="radio" id="carousel-4" name="carousel" aria-hidden="true" hidden="">
+                            <div class="absolute flex flex-wrap overflow-hidden opacity-0 carousel-item">
+                                <div class="justify-center w-full pt-5 pb-5 overflow-hidden text-center" style="height:140px">
+                                    <button id="predict_button_4" class="block p-4 mx-auto text-2xl text-white bg-gray-500 rounded" onclick="predict_image_4()">Predict Image</button>
+                                </div>
+                                <div class="justify-center w-full overflow-hidden" style="height:300px">
+                                    <img class="mx-auto" src="images/mss2.png"></image>
+                                </div>
+                            </div>
+                            <label for="carousel-3" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer control-4 md:ml-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-left"></i></label>
+                            <label for="carousel-5" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-4 md:mr-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-right"></i></label>
 
-				<div class="w-full overflow-hidden text-center">
-				<!-- Title 5 -->
-					<p class="font-sans p-10 pt-20 text-white text-5xl">
-						References
-					</p>
-				</div>
+                            <!--Slide 5-->
+                            <input class="carousel-open" type="radio" id="carousel-5" name="carousel" aria-hidden="true" hidden="">
+                            <div class="absolute flex flex-wrap overflow-hidden opacity-0 carousel-item">
+                                <div class="justify-center w-full pt-5 pb-5 overflow-hidden text-center" style="height:140px">
+                                    <button id="predict_button_5" class="block p-4 mx-auto text-2xl text-white bg-gray-500 rounded" onclick="predict_image_5()">Predict Image</button>
+                                </div>
+                                <div class="justify-center w-full overflow-hidden" style="height:300px">
+                                    <img class="mx-auto" src="images/msi3.png"></image>
+                                </div>
+                            </div>
+                            <label for="carousel-4" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer control-5 md:ml-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-left"></i></label>
+                            <label for="carousel-6" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-5 md:mr-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-right"></i></label>
 
-				<div class="w-full overflow-hidden">
-				<!-- Content 5-->
-					<ul class="list-disc font-sans pl-10 pr-10 pb-20 text-white text-base">
-						<li>Cao, A., Corbett, C., Ha, L., & Wan, Q. (2021). Group 1 - Project Proposal. Monash University - FIT3163.</li>
-						<li>Kather, J. (2019, February 7). Histological images for MSI vs. MSS classification in gastrointestinal cancer, snap-frozen samples [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.2532612	</li>
-						<li>Kather, J. (2019, February 7). Histological images for tumor detection in gastrointestinal cancer [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.2530789	</li>
-						<li>Kather, J., & et al. (2019, July). Deep learning can predict microsatellite instability directly from histology in gastrointestinal cancer. Nature Medicine, (25), 1054–1056. https://doi.org/10.1038/s41591-019-0462-y	</li>
-						<li>Kather, J. N. (2019, February 7). Histological images for MSI vs. MSS classification in gastrointestinal cancer, FFPE samples [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.2530834	</li>
-						<li>Li, Q., Cai, W., Wang, X., Zhou, Y., Feng, D., & Chen, M. (2014, December). Medical Image Classification with Convolutional Neural Networks. International Conference on Control, Automation, Robotics & Vision, 844-848. 10.1109/ICARCV.2014.7064414	</li>
-						<li>Macenko, M., Niethammer, M., Borland, D., Woosley, J., Guan, X., Schmitt, C., & Thomas, N. (2009, June). A Method for Normalizing Histology Slides for Quantitative Analysis. Proceedings of the 2009 IEEE International Symposium on Biomedical Imaging: From Nano to Macro, 1107-1110. http://helios.mi.parisdescartes.fr/~lomn/Data/histopathoDec2017/DestainingNiethamer2009.pdf	</li>
-						<li>Marcelino, P. (2018, October 24). Transfer learning from pre- trained models. Towards Data Science. https://towardsdatascience.com/search?q=Transfer%20learning%20from%20pre-%20trained%20models	</li>
-						<li>Mikołajczyk, A., & Grochowski, M. (2018). Data augmentation for improving deep learning in image classification problem. 2018 International Interdisciplinary PhD Workshop, 117-122. 10.1109/IIPHDW.2018.8388338.	</li>
-						<li>O'Mahony, N. (2019, October). Deep Learning vs. Traditional Computer Vision. Advances in Computer Vision Proceedings of the 2019 Computer Vision Conference, 128-144. 10.1007/978-3-030-17795-9	</li>
-						<li>Saha, S. (2018, December 16). A Comprehensive Guide to Convolutional Neural Networks — the ELI5 way. Towards Data Science. https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53	</li>
-						<li>Shin, H.-C., Roth, H., Gao, M., Lu, L., Xu, Z., Nogues, I., Yao, J., Mollura, D., & Summers, R. (2016, May). Deep Convolutional Neural Networks for Computer-Aided Detection: CNN Architectures, Dataset Characteristics and Transfer Learning. IEEE Transactions on Medical Imaging, 35(5), 1285-1298. 10.1109/TMI.2016.2528162	</li>
-						<li>Talo, M. (2019). Automated classification of histopathology images using transfer learning. Artificial Intelligence in Medicine, 101. https://doi.org/10.1016/j.artmed.2019.101743	</li>
-						<li>Taylor, L., & Nitschke, G. (2017). Improving Deep Learning using Generic Data Augmentation. arXiv preprint. arXiv:1708.06020	</li>
-					</ul>
-				</div>
+                            <!--Slide 6-->
+                            <input class="carousel-open" type="radio" id="carousel-6" name="carousel" aria-hidden="true" hidden="">
+                            <div class="absolute flex flex-wrap overflow-hidden opacity-0 carousel-item">
+                                <div class="justify-center w-full pt-5 pb-5 overflow-hidden text-center" style="height:140px">
+                                    <button id="predict_button_6" class="block p-4 mx-auto text-2xl text-white bg-gray-500 rounded" onclick="predict_image_6()">Predict Image</button>
+                                </div>
+                                <div class="justify-center w-full overflow-hidden" style="height:300px">
+                                    <img class="mx-auto" src="images/mss3.png"></image>
+                                </div>
+                            </div>
+                            <label for="carousel-5" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer control-6 md:ml-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-left"></i></label>
+                            <label for="carousel-1" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-6 md:mr-10 hover:text-white hover:bg-red-400"><i
+								class="mt-3 fas fa-angle-right"></i></label>
 
-			</div>
-		</div>
-		
-		<!-- bottom border-->
-		<div class="bg-gray-400" style="height:44px">
-		</div>
-	</div>
-	
-	<div id="Contact" class="tabcontent" style="height:1400px">
-		<div class="bg-red-400" style="height:1356px">
-			<section class="text-white-600 body-font relative">
-				  <div class="flex flex-col pt-24 text-center w-full mb-12">
-					<h1 class="text-5xl font-sans pb-10 font-medium title-font mb-4 text-white">Contact Us</h1>
-					<p class="lg:text-2xl font-sans w-2/3 mx-auto leading-relaxed text-white">Feel free to talk to us and we will get back to you as soon as possible.</p>
-				  </div>
-				  <div class="lg:w-1/2 md:w-2/3 mx-auto">
-					<div class="flex flex-wrap -m-2">
-					  <div class="p-2 w-1/2">
-						<div class="relative">
-						  <label for="name" class="leading-7 text-2xl font-sans text-white" style="height:50px">Subject</label>
-						  <input type="text" id="subject" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-						</div>
-					  </div>
-					  <div class="p-2 w-1/2">
-						<div class="relative">
-						  <label for="email" class="leading-7 text-2xl font-sans text-white">Email</label>
-						  <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-						</div>
-					  </div>
-					  <div class="p-2 w-full">
-						<div class="relative">
-						  <label for="message" class="leading-7 text-2xl font-sans text-white">Message</label>
-						  <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-						</div>
-					  </div>
-					  <div class="p-2 w-full">
-						<button class="flex mx-auto text-white bg-indigo-500 border-0 py-4 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onclick="send_mail();">Send</button>
-					  </div>
-					  <div class="p-2 w-full pt-8 mt-8 border-t border-white-200 text-center">
-						<a class="text-indigo-500">lewislqac1@email.com</a>
-						<p class="leading-normal my-5">49 Lewis Rd.
-						  <br>Clayton, VIC 3152
-						</p>
-						<span class="inline-flex">
+
+                            <!-- Add additional indicators for each slide-->
+                            <ol class="carousel-indicators">
+                                <li class="inline-block mr-3">
+                                    <label for="carousel-1" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-red-400">•</label>
+                                </li>
+                                <li class="inline-block mr-3">
+                                    <label for="carousel-2" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-red-400">•</label>
+                                </li>
+                                <li class="inline-block mr-3">
+                                    <label for="carousel-3" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-red-400">•</label>
+                                </li>
+                                <li class="inline-block mr-3">
+                                    <label for="carousel-4" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-red-400">•</label>
+                                </li>
+                                <li class="inline-block mr-3">
+                                    <label for="carousel-5" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-red-400">•</label>
+                                </li>
+                                <li class="inline-block mr-3">
+                                    <label for="carousel-6" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-red-400">•</label>
+                                </li>
+                            </ol>
+                        </div>
+                        <div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- spacing div-->
+                <div class="w-full overflow-hidden text-center" style="height:50px">
+                </div>
+            </div>
+        </section>
+
+        <hr>
+        <section>
+            <div class="flex flex-wrap overflow-hidden bg-red-400" style="height:600px">
+                <div class="flex items-center justify-center w-full overflow-hidden h-1/3">
+                    <p class="font-sans text-4xl text-white">
+                        <b>Prediction Results</b>
+                    </p>
+                </div>
+                <div class="flex items-center justify-center w-full pb-20 overflow-hidden text-center h-2/3">
+                    <div class="flex flex-wrap overflow-hidden">
+                        <div class="overflow-hidden w-60">
+                            <p class="float-right p-10 font-sans text-3xl text-white">
+                                Type:
+                            </p>
+                            <p class="float-right p-10 font-sans text-3xl text-white">
+                                Percentage:
+                            </p>
+                        </div>
+                        <div class="overflow-hidden w-60">
+                            <p id="image_type" class="float-left w-full p-10 font-sans text-3xl font-bold text-white">
+                                ---
+                            </p>
+                            <p id="image_percent" class="float-left w-full p-10 font-sans text-3xl font-bold text-white">
+                                ---
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+        <section>
+            <div class="flex flex-wrap overflow-hidden bg-gray-400" style="height:1000px">
+                <div class="flex items-center justify-center w-full overflow-hidden" style="height:180px">
+                    <div class="flex flex-wrap w-full overflow-hidden">
+                        <div class="m-auto overflow-hidden">
+                            <p class="pt-10 pb-10 font-sans text-4xl text-white">
+                                <b>Prediction History</b>
+                            </p>
+                        </div>
+                        <!-- horizontal straight line -->
+                        <div class="w-full overflow-hidden border-2 border-white">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center justify-center w-3/4 pb-20 mx-auto overflow-hidden text-center" style="height:820px">
+                    <div class="flex flex-wrap w-full overflow-hidden" style="height:120px">
+                        <!-- Time -->
+                        <div class="w-2/12 overflow-hidden">
+                            <p class="items-center justify-center pt-5 font-sans text-3xl text-center text-white">Time</p>
+                        </div>
+                        <!-- Image-->
+                        <div class="w-4/12 overflow-hidden">
+                            <p class="items-center justify-center pt-5 font-sans text-3xl text-center text-white">Image</p>
+                        </div>
+                        <!-- Type-->
+                        <div class="w-3/12 overflow-hidden">
+                            <p class="items-center justify-center pt-5 font-sans text-3xl text-center text-white">Type</p>
+                        </div>
+                        <!-- Prediction-->
+                        <div class="w-3/12 overflow-hidden">
+                            <p class="items-center justify-center pt-5 font-sans text-3xl text-center text-white">Percentage</p>
+                        </div>
+                    </div>
+                    <div id="pred_window" class="flex flex-wrap w-full overflow-hidden" style="height:700px">
+                        <!-- Time -->
+                        <div class="w-2/12 overflow-hidden">
+                            <ul id="history_time" class="items-center justify-center pt-5 font-sans text-2xl text-center text-white"></ul>
+                        </div>
+                        <!-- Image-->
+                        <div class="w-4/12 overflow-hidden">
+                            <ul id="history_image" class="items-center justify-center pt-5 font-sans text-2xl text-center text-white"></ul>
+                        </div>
+                        <!-- Type-->
+                        <div class="w-3/12 overflow-hidden">
+                            <ul id="history_type" class="items-center justify-center pt-5 font-sans text-2xl text-center text-white"></ul>
+                        </div>
+                        <!-- Prediction-->
+                        <div class="w-3/12 overflow-hidden">
+                            <ul id="history_percent" class="items-center justify-center pt-5 font-sans text-2xl text-center text-white"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="About" class="tabcontent" style="height:4500px">
+
+        <div class="bg-red-400" style="height:4456px">
+            <div class="flex flex-wrap p-20 pl-20 pr-20 overflow-hidden">
+                <div class="w-full overflow-hidden text-center">
+                    <!-- Title 1 -->
+                    <p class="p-5 font-sans text-5xl text-white">
+                        Gastrointestinal cancers
+                    </p>
+                </div>
+
+                <div class="w-full overflow-hidden">
+                    <!-- Content 1-->
+                    <p class="p-10 pb-20 font-sans text-xl text-justify text-white">
+                        Immunotherapy treatment is responsible for a significant reduction in cancer patient mortality and is a cornerstone of cancer therapy (Kather & et al, 2019, 1). However gastro-intestinal cancer patients tend not to benefit from the treatment, as other
+                        solid malignant tumor cancer patients might, unless the tumor belongs to the group Microsatellite Instable (MSI) (Kather & et al, 2019, 1). This group accounts for approximately 15% of gastric adreno-carcinomas and colorectal cancers,
+                        with the remaining 85% being Microsatellite Stable (MSS) tumors. Currently most gastro-intestinal cancer patients are not tested to determine if their tumor falls within the MSI group as to do so requires extensive immunohistochemistry
+                        and genetic analysis (Kather & et al, 2019, 1).
+                        <br><br>The current process for patients to achieve a MSI cancer-type diagnosis (and immunotherapy treatment) requires extensive immunohistochemistry and genetic testing (Kather & et al, 2019). Furthermore, analysis of this testing
+                        is typically conducted by a human pathologist with domain expertise. These extra requirements and associated time delays reduce screening of patients for MSI-type cancer. Accordingly, a significant portion of the 15% of gastro-intestinal
+                        cancer patients may not be offered timely and potentially life-saving immunotherapy treatment (Kather & et al, 2019).
+                        <br><br>We aim to develop an accurate model that can assist medical professionals in achieving MSI cancer diagnoses for patients. Thereby increasing access and use of critical immunotherapy treatments. This model will receive a
+                        haematoxylin and eosin (H&E) stained histology image tile. Convolutional Neural Networks (CNNs) such as VGGNet and ResNet will be used to extract relevant features from the cell microstructures present in the images. These structures
+                        are generally indistinguishable by the human eye. The features will then be fed through a classifier such as Fully-Connected Neural Network with Soft-Max Function, Decision Tree, Random Forest or Support Vector Machine. Returning
+                        a classification prediction for MSI and MSS-type cancer.
+                    </p>
+                </div>
+
+                <div class="w-full overflow-hidden text-center">
+                    <!-- Title 2 -->
+                    <p class="p-5 font-sans text-5xl text-white">
+                        Deep learning models
+                    </p>
+                </div>
+
+                <div class="w-full overflow-hidden">
+                    <!-- Content 2-->
+                    <p class="p-10 pb-20 font-sans text-xl text-justify text-white">
+                        Deep learning models are generally more accurate than machine learning approaches when performing image classification (O'Mahony, 2019). This is partly due to deep learning’s ability to generalise when presented with new information and infer features
+                        from provided data (O'Mahony, 2019). Whereas machine learning approaches require developers to manually extract and weight relevant feature descriptors (Li et al., 2014, 844; O'Mahony, 2019). Similarly, deep learning models are
+                        generally more accurate than human domain experts when classifying medical images.
+                        <br><br>Neural networks distinct advantages arise from their ability to generalise solutions to different types of problems using similar designs (Li et al., 2014, 844). In image classification problems, image pixels within red,
+                        green and blue (RGB) channels can be used directly as input to standard feed-forward neural networks. The neural network learns the correct classification from this raw image pixel data. However, even small image tiles may contain
+                        thousands of pixels, resulting in very large numbers of connections between nodes and millions of weights to calculate (Li et al., 2014, 845).
+                        <br><br>In contrast, CNN models combine weights into small kernel filters that dramatically simplifies the learning model. Focusing learning on features extracted by convolutions, rather than raw pixel data. CNN networks are a
+                        successful attempt to model humans’ visual cortex architecture using neural networks (Li et al., 2014, 844). They are much faster and more robust than traditional feed-forward neural networks (Li et al., 2014, 845). Consequently,
+                        research based on CNNs has significantly improved classification accuracy for image databases including the MNIST and NORB databases, and the CIFAR10 dataset (Li et al., 2014, 844).
+                        <br><br>A typical CNN consists of a series of connected blocks comprising convolutional, pooling and fully-connected layers enabling feature extraction and classification (Talo, 2019, 3) (see Figure 1). Different CNN architectures
+                        uniquely order and connect these blocks and layers to produce novel new learning capabilities. AlexNet, one of the first implementations of CNNs, comprises 11 layers: 5 convolutional layers, 3 pooling/down-sampling layers and 3
+                        fully-connected layers. VGGNet-16, another well-known CNN, has 13 convolutional layers, 5 pooling/down-sampling layers and 3 fully-connected layers.
+                    </p>
+                    <img class="mx-auto" src="images/CNN_diagram.jpeg" width: "800" height: "300"></image>
+                    <p class="p-5 font-sans text-base text-center text-white">
+                        Figure 1: Convolution Neural Network architecture diagram (Saha, 2018).
+                    </p>
+                    <p class="p-10 pb-20 font-sans text-xl text-justify text-white">
+                        Modern CNN architectures tend to be deeper than shallow architectures and use progressively more complex connections across alternating layers (Talo, 2019, 3). ResNet CNN architecture introduced residual connections to avoid information loss during training
+                        of deep networks, such as a 1001-layer deep CNN model (Talo, 2019, 3). The DenseNet CNN architecture was built with structures connecting each layer to subsequent layers. Important features learned by any DenseNet layer could then
+                        be shared within the network (Talo, 2019, 3).
+                    </p>
+                </div>
+
+                <div class="w-full overflow-hidden text-center">
+                    <!-- Title 3 -->
+                    <p class="p-5 font-sans text-5xl text-white">
+                        Training dataset
+                    </p>
+                </div>
+
+                <div class="w-full overflow-hidden">
+                    <!-- Content 3-->
+                    <p class="p-10 pb-10 font-sans text-xl text-white">
+                        The dataset contains approx. 192,000 224x244px tile images (Kather, 2019). Each image displays a Formalin-Fixed Paraffin-Embedded tissue sample originally captured as a Whole Slide Image (WSI) (Kather, 2019; Talo, 2019, 1). These WSIs have been cropped
+                        and split into tiles to reduce image size. As model size and memory requirements exponentially increase with image dimensions (Li et al., 2014, 845). These samples have been stained to reveal high-level structures and histologies
+                        (Kather, 2019; Talo, 2019, 1). The structures are generally analysed by pathologists for morphological characteristics (Talo, 2019, 1). With MSI classification depending on the presence of instability in these structures (Kather
+                        & et al, 2019). This dataset is therefore well-suited to CNN-type deep learning models (Li et al., 2014, 844).
+                    </p>
+                    <img class="mx-auto" src="images/dataset_example_images.JPG"></image>
+                    <p class="p-5 pb-20 font-sans text-base text-center text-white">
+                        Figure 2: Example H&E stained tile images from proposed dataset (Kather, 2019)
+                    </p>
+                </div>
+
+                <div class="w-full overflow-hidden text-center">
+                    <!-- Title 4 -->
+                    <p class="p-5 font-sans text-5xl text-white">
+                        Prediction methodology
+                    </p>
+                </div>
+
+                <div class="w-full overflow-hidden">
+                    <!-- Content 4-->
+                    <p class="p-10 pb-20 font-sans text-xl text-justify text-white">
+                        Pre-processing is highly relevant to improving dataset robustness and model accuracy. For image classification tasks this generally involves colour normalisation, resizing, randomisation, and segregation. This dataset has been pre-processed prior to being
+                        made publicly available. The tile images have been colour normalised according to the Mackenko method (Kather, 2019, Macenko et al., 2009) - removing inconsistencies and bringing each WSI into a common normalised space (Macenko
+                        et al., 2009). The tile images have been resized to a common 244x244px dimension - a common default input dimension for many CNNs (Siu et al., 2018, 4-5). The data has been segregated into two sets containing 70% training data
+                        and 30% test data. Images have been randomly assigned into these sets per patient, not per tile, preserving testing integrity (Kather, 2019). Finally, equilibration of training set data was achieved by randomly undersampling the
+                        MSS-type class which contained more image tiles than MSI-type (Kather, 2019).
+                        <br><br>Various training approaches have been developed to balance pre-trained and custom CNNs trade-offs, including transfer learning and fine-tuning.
+                        <br><br>The transfer learning technique involves ‘freezing’ the convolutional base and removing the pre-trained classification layers (Shin et al., 2016). The remaining convolutional layers are used as a feature extractor for the
+                        new classifier trained on our dataset (Talo, 2019, 3; Shin et al., 2016). For image classification tasks, the standard approach is to use a stack of fully-connected neural network layers followed by a Soft-Max activation layer
+                        (Marcelino, 2018). The Soft-Max layer outputs the probability distribution for the MSI and MSS-type cancer classes. Classification then occurs according to the most probable class (Marcelino, 2018).
+                        <br><br>Using the transfer learning technique we may transfer the knowledge (i.e. weights) of the basic structures learned in the CNNs initial layers to the new classifier (Talo, 2019, 3; Shin et al., 2016). The essential structures
+                        that pre-trained CNN models have learned to identify different objects in databases such as ImageNet can be used to classify WSI histologies (Talo, 2019, 3; Shin et al., 2016). This technique therefore accelerates the training
+                        and development process for new CNN models and classification tasks.
+                        <br><br>Given our dataset is quite large (with approx. 192,000 tile images) we may also choose to ‘unfreeze’ some convolutional layers in the pre-trained CNN during training (Marcelino, 2018). This process is referred to as fine-tuning
+                        the CNN model. Convolutional layers generally extract either low-level features that are generic and problem independent, and high-level features specific to the image classification problem (Mikołajczyk & Grochowski, 2018, 3).
+                        By unfreezing some of these layers, we can allow our CNN to learn the high-level features specific to our dataset. This affects the CNNs generalising capability but improves classification accuracy for our specific classes.
+                        <br><br>Importantly however, we must be careful when adjusting the learning rate used in the unfrozen convolutional layers (Marcelino, 2018). The learning rate is a hyper-parameter controlling adjustment of weights within the CNN.
+                        When using a pre-trained CNN model it is beneficial to retain a small learning rate to prevent losing previous knowledge. Considering most pre-trained CNNs are trained on massive datasets, keeping a small learning rate will ensure
+                        that the CNNs useful pre-trained low-level feature extraction weights are not distorted too soon or too much during fine-tuning (Marcelino, 2018).
+                        <br><br>Augmenting training datasets can improve CNNs classification accuracy (Mikołajczyk & Grochowski, 2018; Heidari et al., 2020; Taylor & Nitschke, 2017). Augmentation generally involves applying combinations of simple affine
+                        transformations such as rotation, reflection, shearing, and zooming to images (Mikołajczyk & Grochowski, 2018, 2). Geometric augmentations may also be used to broaden a dataset, though these are still the subject of research (Mikołajczyk
+                        & Grochowski, 2018, 2). These augmentations include increasing image contrast, white balance, sharpening, and histogram equalisation (Mikołajczyk & Grochowski, 2018, 2). The total dataset is artificially inflated by these combined
+                        augmentations (Taylor & Nitschke, 2017). This improves CNNs ability to generalise against unseen data. Reducing the over-fitting effect that occurs during fine-tuning (Taylor & Nitschke, 2017).
+                    </p>
+                    <img class="mx-auto" src="images/data_aug_methods_combined.JPG"></image>
+                    <p class="p-5 font-sans text-base text-center text-white">
+                        Figure 3: Data augmentation methods applied to melanoma tile images (Mikołajczyk & Grochowski, 2018).
+                    </p>
+                    <p class="p-10 pb-20 font-sans text-xl text-justify text-white">
+                        <!-- Do not delete, required for proper spacing, if text needed here then add here-->
+                    </p>
+                </div>
+
+                <div class="w-full overflow-hidden text-center">
+                    <!-- Title 5 -->
+                    <p class="p-10 pt-20 font-sans text-5xl text-white">
+                        References
+                    </p>
+                </div>
+
+                <div class="w-full overflow-hidden">
+                    <!-- Content 5-->
+                    <ul class="pb-20 pl-10 pr-10 font-sans text-base text-white list-disc">
+                        <li>Cao, A., Corbett, C., Ha, L., & Wan, Q. (2021). Group 1 - Project Proposal. Monash University - FIT3163.</li>
+                        <li>Kather, J. (2019, February 7). Histological images for MSI vs. MSS classification in gastrointestinal cancer, snap-frozen samples [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.2532612 </li>
+                        <li>Kather, J. (2019, February 7). Histological images for tumor detection in gastrointestinal cancer [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.2530789 </li>
+                        <li>Kather, J., & et al. (2019, July). Deep learning can predict microsatellite instability directly from histology in gastrointestinal cancer. Nature Medicine, (25), 1054–1056. https://doi.org/10.1038/s41591-019-0462-y </li>
+                        <li>Kather, J. N. (2019, February 7). Histological images for MSI vs. MSS classification in gastrointestinal cancer, FFPE samples [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.2530834 </li>
+                        <li>Li, Q., Cai, W., Wang, X., Zhou, Y., Feng, D., & Chen, M. (2014, December). Medical Image Classification with Convolutional Neural Networks. International Conference on Control, Automation, Robotics & Vision, 844-848. 10.1109/ICARCV.2014.7064414
+                            </li>
+                        <li>Macenko, M., Niethammer, M., Borland, D., Woosley, J., Guan, X., Schmitt, C., & Thomas, N. (2009, June). A Method for Normalizing Histology Slides for Quantitative Analysis. Proceedings of the 2009 IEEE International Symposium
+                            on Biomedical Imaging: From Nano to Macro, 1107-1110. http://helios.mi.parisdescartes.fr/~lomn/Data/histopathoDec2017/DestainingNiethamer2009.pdf </li>
+                        <li>Marcelino, P. (2018, October 24). Transfer learning from pre- trained models. Towards Data Science. https://towardsdatascience.com/search?q=Transfer%20learning%20from%20pre-%20trained%20models </li>
+                        <li>Mikołajczyk, A., & Grochowski, M. (2018). Data augmentation for improving deep learning in image classification problem. 2018 International Interdisciplinary PhD Workshop, 117-122. 10.1109/IIPHDW.2018.8388338. </li>
+                        <li>O'Mahony, N. (2019, October). Deep Learning vs. Traditional Computer Vision. Advances in Computer Vision Proceedings of the 2019 Computer Vision Conference, 128-144. 10.1007/978-3-030-17795-9 </li>
+                        <li>Saha, S. (2018, December 16). A Comprehensive Guide to Convolutional Neural Networks — the ELI5 way. Towards Data Science. https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53
+                            </li>
+                        <li>Shin, H.-C., Roth, H., Gao, M., Lu, L., Xu, Z., Nogues, I., Yao, J., Mollura, D., & Summers, R. (2016, May). Deep Convolutional Neural Networks for Computer-Aided Detection: CNN Architectures, Dataset Characteristics and Transfer
+                            Learning. IEEE Transactions on Medical Imaging, 35(5), 1285-1298. 10.1109/TMI.2016.2528162 </li>
+                        <li>Talo, M. (2019). Automated classification of histopathology images using transfer learning. Artificial Intelligence in Medicine, 101. https://doi.org/10.1016/j.artmed.2019.101743 </li>
+                        <li>Taylor, L., & Nitschke, G. (2017). Improving Deep Learning using Generic Data Augmentation. arXiv preprint. arXiv:1708.06020 </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- bottom border-->
+        <div class="bg-gray-400" style="height:44px">
+        </div>
+    </div>
+
+    <div id="Contact" class="tabcontent" style="height:1400px">
+        <div class="bg-red-400" style="height:1356px">
+            <section class="relative text-white-600 body-font">
+                <div class="flex flex-col w-full pt-24 mb-12 text-center">
+                    <h1 class="pb-10 mb-4 font-sans text-5xl font-medium text-white title-font">Contact Us</h1>
+                    <p class="w-2/3 mx-auto font-sans leading-relaxed text-white lg:text-2xl">Feel free to talk to us and we will get back to you as soon as possible.</p>
+                </div>
+                <div class="mx-auto lg:w-1/2 md:w-2/3">
+                    <div class="flex flex-wrap -m-2">
+                        <div class="w-1/2 p-2">
+                            <div class="relative">
+                                <label for="name" class="font-sans text-2xl leading-7 text-white" style="height:50px">Subject</label>
+                                <input type="text" id="subject" name="name" class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+                            </div>
+                        </div>
+                        <div class="w-1/2 p-2">
+                            <div class="relative">
+                                <label for="email" class="font-sans text-2xl leading-7 text-white">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+                            </div>
+                        </div>
+                        <div class="w-full p-2">
+                            <div class="relative">
+                                <label for="message" class="font-sans text-2xl leading-7 text-white">Message</label>
+                                <textarea id="message" name="message" class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"></textarea>
+                            </div>
+                        </div>
+                        <div class="w-full p-2">
+                            <button class="flex px-8 py-4 mx-auto text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600" onclick="send_mail();">Send</button>
+                        </div>
+                        <div class="w-full p-2 pt-8 mt-8 text-center border-t border-white-200">
+                            <a class="text-indigo-500">lewislqac1@email.com</a>
+                            <p class="my-5 leading-normal">49 Lewis Rd.
+                                <br>Clayton, VIC 3152
+                            </p>
+                            <span class="inline-flex">
 						  <a class="text-gray-500">
 							<svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
 							  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -520,15 +542,16 @@
 							</svg>
 						  </a>
 						</span>
-					  </div>
-					</div>
-				  </div>
-			  </section>
-			</div>
-		<!-- bottom border-->
-		<div class="bg-gray-400" style="height:44px">
-		</div>
-	</div>
-	
-	</body>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- bottom border-->
+        <div class="bg-gray-400" style="height:44px">
+        </div>
+    </div>
+
+</body>
+
 </html>
