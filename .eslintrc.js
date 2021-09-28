@@ -10,6 +10,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:package-json/recommended",
+    "plugin:json/recommended",
     "prettier",
   ],
   parser: "@babel/eslint-parser",
@@ -23,16 +24,11 @@ module.exports = {
     },
   },
   rules: {
-    "sort-exports/sort-exports": ["error", { sortDir: "asc" }],
     "sort-imports": ["error", { ignoreCase: true }],
-    "prettier/prettier": [
-      "error",
-      {
-        singleQuote: false,
-      },
-    ],
+    "sort-exports/sort-exports": ["error", { sortDir: "asc" }],
+    "prettier/prettier": ["error", { parser: "javascript" }],
   },
-  plugins: ["react", "sort-exports", "package-json", "prettier"],
+  plugins: ["react", "sort-exports", "prettier", "package-json"],
   settings: {
     react: {
       version: "16.3",

@@ -1,2 +1,8 @@
+output_med
 node_modules
-main.js
+build_image_data.py
+Miscellaneous
+Models
+dist
+.storybook
+src/stories
