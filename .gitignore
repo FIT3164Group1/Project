@@ -6,3 +6,4 @@ Models
 dist
 .storybook
 src/stories
+package-lock.json
