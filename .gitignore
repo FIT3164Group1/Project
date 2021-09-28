@@ -1,6 +1,8 @@
-package.json
 output_med
 node_modules
 build_image_data.py
 Miscellaneous
 Models
+dist
+.storybook
+src/stories

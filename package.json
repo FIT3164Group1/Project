@@ -1,0 +1,75 @@
+{
+  "name": "fit3164-cnn-website",
+  "version": "1.0.0",
+  "description": "Front-end user interface for a CNN classification model served on Google Cloud Platform.",
+  "main": "custom.js",
+  "scripts": {
+    "build": "webpack",
+    "build-storybook": "build-storybook",
+    "dev": "webpack serve",
+    "lint": "eslint --ext .js,.jsx,.json src/js",
+    "lint:fix": "eslint --fix --ext .js,.jsx,.json",
+    "storybook": "start-storybook -p 6006",
+    "test": "jest",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FIT3164Group1/Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FIT3164Group1/Project/issues"
+  },
+  "homepage": "https://github.com/FIT3164Group1/Project#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.15.4",
+    "axios": "^0.21.4",
+    "image-validator": "^1.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.7",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/builder-webpack5": "^6.3.8",
+    "@storybook/manager-webpack5": "^6.3.8",
+    "@storybook/react": "^6.3.8",
+    "autoprefixer": "^10.3.6",
+    "babel-loader": "^8.2.2",
+    "browserslist": "^4.17.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.3.0",
+    "daisyui": "^1.14.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-package-json": "^0.1.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.0",
+    "eslint-plugin-sort-exports": "^0.5.0",
+    "eslint-webpack-plugin": "^3.0.1",
+    "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.2.2",
+    "mini-css-extract-plugin": "^2.3.0",
+    "postcss": "^8.3.8",
+    "postcss-loader": "^6.1.1",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.2.1",
+    "style-loader": "^3.3.0",
+    "tailwindcss": "^2.2.16",
+    "webpack": "^5.54.0",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.3.0"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}

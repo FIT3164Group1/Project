@@ -9,14 +9,15 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 const webpackConfig = {
     mode: 'development',
-    target: ['web'],
+    // target: ['web'],
     entry: {
         main: path.resolve(__dirname, './src/js/main.js'),
     },
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
-        assetModuleFilename: 'images/[hash][ext][query]'
+        assetModuleFilename: 'images/[hash][ext][query]',
+        chunkFormat: 'commonjs',
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -45,7 +46,7 @@ const webpackConfig = {
         rules: [
             // JavaScript
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
                 include: path.resolve(__dirname, 'src/js'),
