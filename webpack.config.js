@@ -4,7 +4,8 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+//   .BundleAnalyzerPlugin;
 // const ESLintPlugin = require('eslint-webpack-plugin')
 
 const webpackConfig = {
@@ -12,8 +13,8 @@ const webpackConfig = {
   // target: ['web'],
   entry: {
     index: path.resolve(__dirname, "./src/pages/index/index.js"),
-    about: path.resolve(__dirname, "./src/pages/index/index.js"),
-    contact: path.resolve(__dirname, "./src/pages/index/index.js"),
+    about: path.resolve(__dirname, "./src/pages/about/index.js"),
+    contact: path.resolve(__dirname, "./src/pages/contact/index.js"),
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
