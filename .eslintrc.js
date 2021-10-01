@@ -8,9 +8,9 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:react/recommended",
     "plugin:package-json/recommended",
     "plugin:json/recommended",
+    "plugin:react/recommended",
     "prettier",
   ],
   parser: "@babel/eslint-parser",
@@ -26,7 +26,9 @@ module.exports = {
   rules: {
     "sort-imports": ["error", { ignoreCase: true }],
     "sort-exports/sort-exports": ["error", { sortDir: "asc" }],
-    "prettier/prettier": ["error", { parser: "javascript" }],
+    "prettier/prettier": ["error"],
+    // "react/jsx-uses-react": "off",
+    // "react/react-in-jsx-scope": "off",
   },
   plugins: ["react", "sort-exports", "prettier", "package-json"],
   settings: {
