@@ -5,11 +5,9 @@
   "main": "custom.js",
   "scripts": {
     "build": "webpack",
-    "build-storybook": "build-storybook",
     "dev": "webpack serve",
-    "lint": "eslint --ext .js,.jsx,.json .",
-    "lint:fix": "eslint --fix --ext .js,.jsx,.json .",
-    "storybook": "start-storybook -p 6006",
+    "lint": "eslint --ext .js,.jsx .",
+    "lint:fix": "eslint --fix --ext .js,.jsx .",
     "test": "jest",
     "watch": "webpack --watch"
   },
@@ -17,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/FIT3164Group1/Project.git"
   },
-  "author": "",
+  "author": "Cooper Corbett",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FIT3164Group1/Project/issues"
@@ -36,12 +34,6 @@
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
-    "@storybook/addon-actions": "^6.3.8",
-    "@storybook/addon-essentials": "^6.3.8",
-    "@storybook/addon-links": "^6.3.8",
-    "@storybook/builder-webpack5": "^6.3.8",
-    "@storybook/manager-webpack5": "^6.3.8",
-    "@storybook/react": "^6.3.8",
     "autoprefixer": "^10.3.6",
     "babel-loader": "^8.2.2",
     "browserslist": "^4.17.1",
