@@ -11,7 +11,9 @@ const webpackConfig = {
   mode: "development",
   // target: ['web'],
   entry: {
-    main: path.resolve(__dirname, "./src/js/main.js"),
+    index: path.resolve(__dirname, "./src/pages/index/index.js"),
+    about: path.resolve(__dirname, "./src/pages/index/index.js"),
+    contact: path.resolve(__dirname, "./src/pages/index/index.js"),
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -21,9 +23,22 @@ const webpackConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Gastro-intestinal Cancer Classifier",
-      template: path.resolve(__dirname, "./src/html/index.html"), // index file
+      title: "Home | Gastro-intestinal Cancer Classifier ",
+      template: path.resolve(__dirname, "./src/pages/index.html"), // index file
       filename: "index.html", // output file
+      chunks: ["index", "vendor"],
+    }),
+    new HtmlWebpackPlugin({
+      title: "About | Gastro-intestinal Cancer Classifier",
+      template: path.resolve(__dirname, "./src/pages/index.html"), // index file
+      filename: "about.html", // output file
+      chunks: ["about", "vendor"],
+    }),
+    new HtmlWebpackPlugin({
+      title: "Contact Us | Gastro-intestinal Cancer Classifier",
+      template: path.resolve(__dirname, "./src/pages/index.html"), // index file
+      filename: "contact.html", // output file
+      chunks: ["contact", "vendor"],
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -48,10 +63,10 @@ const webpackConfig = {
     rules: [
       // JavaScript
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$|jsx/,
         exclude: /node_modules/,
         use: ["babel-loader"],
-        include: path.resolve(__dirname, "src/js"),
+        include: path.resolve(__dirname, "src"),
       },
       // CSS
       {
@@ -66,6 +81,21 @@ const webpackConfig = {
       },
     ],
   },
+  resolve: {
+    extensions: [".js", ".jsx", ".json"],
+  },
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       vendor: {
+  //         test: /node_modules/,
+  //         chunks: "all",
+  //         name: "vendor",
+  //         enforce: true,
+  //       },
+  //     },
+  //   },
+  // },
 };
 
 module.exports = webpackConfig;
