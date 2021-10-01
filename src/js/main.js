@@ -1,5 +1,7 @@
 import "../css/styles.css";
-const axios = require("axios").default;
+import axios from "axios";
+
+// const axios = require("axios").default;
 // import Image from "../../Miscellaneous/images/msi1.png";
 // import JSON from '../../Miscellaneous/dummy.json'
 // import { validateImage } from "image-validator"
