@@ -1,56 +1,47 @@
-import React, { Component } from "react";
+import PropTypes from "prop-types";
+import React from "react";
 
-class Carousel extends Component {
-  render() {
-    return (
-      <div className="p-4">
-        <div className="p-4 space-x-4 bg-white shadow-lg max-w-screen-2xl carousel carousel-center rounded-box">
-          <div className="carousel-item">
-            <img
-              src="https://picsum.photos/id/500/256/144"
-              className="rounded-box"
-            />
+const Carousel = (props) => {
+  const { images, imageClickHandler, selectedImage } = props;
+
+  return (
+    <div className="gap-2 p-5 carousel carousel-center rounded-box">
+      {images.map((image, index) => {
+        const { path, type } = image;
+        return (
+          <div key={index} className="carousel-item">
+            <div className=" indicator">
+              <div
+                className={`mb-6 indicator-item indicator-bottom indicator-center badge text-black shadow-lg ${
+                  type == "MSI" ? "bg-warning" : "badge-accent border-black"
+                }`}
+              >
+                {type}
+              </div>
+              <img
+                className={`rounded-lg shadow-lg ${
+                  selectedImage?.index != index
+                    ? ""
+                    : type == "MSI"
+                    ? "border-2 border-warning"
+                    : "border-2 border-accent"
+                }`}
+                src={path}
+                onClick={imageClickHandler({ index, image })}
+                id={index}
+              />
+            </div>
           </div>
-          <div className="carousel-item">
-            <img
-              src="https://picsum.photos/id/501/256/144"
-              className="rounded-box"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://picsum.photos/id/502/256/144"
-              className="rounded-box"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://picsum.photos/id/503/256/144"
-              className="rounded-box"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://picsum.photos/id/504/256/144"
-              className="rounded-box"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://picsum.photos/id/505/256/144"
-              className="rounded-box"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://picsum.photos/id/506/256/144"
-              className="rounded-box"
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+        );
+      })}
+    </div>
+  );
+};
+
+Carousel.propTypes = {
+  images: PropTypes.array.isRequired,
+  imageClickHandler: PropTypes.func.isRequired,
+  selectedImage: PropTypes.number.isRequired,
+};
 
 export default Carousel;
