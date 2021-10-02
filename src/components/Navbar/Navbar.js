@@ -5,27 +5,36 @@ class Navbar extends Component {
   render() {
     const { home, about, contact } = this.props;
     return (
-      <div className="py-4 md:px-2">
+      <div className="p-3">
         <div className="shadow-lg navbar bg-neutral text-neutral-content rounded-box">
           <div className="hidden px-2 mx-2 lg:flex navbar-start">
             <a className="text-lg font-bold" href={home}>
               Gastro-intestinal Cancer Classifier
             </a>
           </div>
-          <div className="flex px-2 mx-2">
+          <div className="flex px-1 mx-1 md:px-2 md:mx-2 ">
             <div className="flex items-stretch">
-              <a className="btn btn-ghost btn-sm rounded-btn" href={home}>
+              <a
+                className="px-1 btn btn-ghost btn-sm rounded-btn md:px-3"
+                href={home}
+              >
                 Home
               </a>
-              <a className="btn btn-ghost btn-sm rounded-btn" href={about}>
+              <a
+                className="px-1 md:px-3 btn btn-ghost btn-sm rounded-btn"
+                href={about}
+              >
                 About the Project
               </a>
-              <a className="btn btn-ghost btn-sm rounded-btn" href={contact}>
+              <a
+                className="px-1 md:px-3 btn btn-ghost btn-sm rounded-btn"
+                href={contact}
+              >
                 Contact
               </a>
             </div>
           </div>
-          <div className="flex-grow px-2 mx-2 navbar-end">
+          <div className="flex-grow px-1 mx-1 md:px-2 md:mx-2 navbar-end">
             <button className="fill-current btn btn-square btn-ghost text-neutral-content">
               <a
                 href="https://github.com/FIT3164Group1/Project"
