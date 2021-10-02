@@ -23,7 +23,7 @@ const ContactCard = () => {
 
   return (
     <div className="p-4 shadow-2xl card bordered">
-      <h1 className="text-center">Contact Us</h1>
+      <h1 className="text-2xl text-center">Contact Us</h1>
       <p className="text-center">
         Feel free to contact us and we will get back to you as soon as possible.
       </p>
