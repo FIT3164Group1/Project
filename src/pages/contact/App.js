@@ -14,7 +14,7 @@ function App() {
     <>
       <Navbar {...props} />
       <div className="flex flex-col w-full mt-8 mb-4">
-        <div className="w-2/3 mx-auto">
+        <div className="mx-auto">
           <ContactCard></ContactCard>
         </div>
       </div>
