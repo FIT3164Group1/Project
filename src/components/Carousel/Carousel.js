@@ -41,7 +41,7 @@ const Carousel = (props) => {
 Carousel.propTypes = {
   images: PropTypes.array.isRequired,
   imageClickHandler: PropTypes.func.isRequired,
-  selectedImage: PropTypes.number.isRequired,
+  selectedImage: PropTypes.object,
 };
 
 export default Carousel;
