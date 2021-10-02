@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Carousel from "../../components/Carousel/Carousel";
+import ClassifierTabs from "../../components/ClassifierTabs/ClassifierTabs";
 import Footer from "../../components/Footer/Footer";
 import MSI1Image from "../../img/samples/msi1.png";
 import MSI2Image from "../../img/samples/msi2.png";
@@ -8,6 +7,11 @@ import MSS1Image from "../../img/samples/mss1.png";
 import MSS2Image from "../../img/samples/mss2.png";
 import MSS3Image from "../../img/samples/mss3.png";
 import Navbar from "../../components/Navbar/Navbar";
+import React from "react";
+import smoothscroll from "smoothscroll-polyfill";
+
+// kick off the polyfill!
+smoothscroll.polyfill();
 
 const props = {
   home: "#",
@@ -24,29 +28,6 @@ const props = {
 };
 
 function App() {
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleImageClick = (params) => (event) => {
-    const { index } = params;
-    event.preventDefault();
-    setSelectedImage(params);
-    document.getElementById(`${index}`).scrollIntoView({
-      behavior: "smooth",
-    });
-    console.log(params?.image);
-  };
-
-  const handleClick = (event) => {
-    event.target.tagName != "IMG" ? setSelectedImage(null) : "";
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClick, false);
-    return () => {
-      document.addEventListener("mousedown", handleClick, false);
-    };
-  }, [handleClick]);
-
   return (
     <>
       <Navbar {...props} />
@@ -94,25 +75,7 @@ function App() {
               <hr className="border-base-100" />
             </div>
           </div>
-          <div className="card text-base-content">
-            <div className="card-body">
-              <div className="card-title">Classify</div>
-              <Carousel
-                {...props}
-                selectedImage={selectedImage}
-                imageClickHandler={handleImageClick}
-              ></Carousel>
-              <div className="justify-center card-actions">
-                <button
-                  className={`w-32 btn btn-med ${
-                    selectedImage == null ? "btn-disabled" : ""
-                  }`}
-                >
-                  Classify
-                </button>
-              </div>
-            </div>
-          </div>
+          <ClassifierTabs {...props}></ClassifierTabs>
           <Footer {...props} />
         </div>
       </div>
