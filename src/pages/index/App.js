@@ -1,3 +1,4 @@
+import ClassificationHistoryProvider from "../../components/ClassificationHistoryProvider/ClassificationHistoryProvider";
 import ClassifierTabs from "../../components/ClassifierTabs/ClassifierTabs";
 import Footer from "../../components/Footer/Footer";
 import MSI1Image from "../../img/samples/msi1.png";
@@ -30,55 +31,58 @@ const props = {
 function App() {
   return (
     <>
-      <Navbar {...props} />
-      <div className="flex flex-col items-center ">
-        <div className="md:w-4/5">
-          <div className="card text-base-content">
-            <div className="card-body">
-              <div className="mb-5 text-center card-title">
-                Gastro-intestinal Cancer Classification
-              </div>
-              <div className="flex flex-col gap-3 md:flex-row">
-                <div className="w-full md:w-1/2">
-                  <div className="shadow-2xl card bordered">
-                    <div className="card-body">
-                      <div className="text-center card-title">
-                        <div className="p-5 text-2xl badge badge-primary">
-                          Goal
+      <ClassificationHistoryProvider>
+        <Navbar {...props} />
+        <div className="flex flex-col items-center ">
+          <div className="md:w-4/5">
+            <div className="card text-base-content">
+              <div className="card-body">
+                <div className="mb-5 text-center card-title">
+                  Gastro-intestinal Cancer Classification
+                </div>
+                <div className="flex flex-col gap-3 md:flex-row">
+                  <div className="w-full md:w-1/2">
+                    <div className="shadow-2xl card bordered">
+                      <div className="card-body">
+                        <div className="text-center card-title">
+                          <div className="p-5 text-2xl badge badge-primary">
+                            Goal
+                          </div>
                         </div>
+                        <p>
+                          Utilise our cancer prediction model with your own
+                          histological image.
+                        </p>
                       </div>
-                      <p>
-                        Utilise our cancer prediction model with your own
-                        histological image.
-                      </p>
+                    </div>
+                  </div>
+                  <div className="w-full md:w-1/2">
+                    <div className="shadow-2xl card bordered">
+                      <div className="card-body">
+                        <div className="text-center card-title">
+                          <div className="p-5 text-2xl badge badge-secondary">
+                            Strategy
+                          </div>
+                        </div>
+                        <p>
+                          We create a classfication model to identify between
+                          the the two possible categories MSS and MSIMUS (MSI)
+                          of cancer.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="w-full md:w-1/2">
-                  <div className="shadow-2xl card bordered">
-                    <div className="card-body">
-                      <div className="text-center card-title">
-                        <div className="p-5 text-2xl badge badge-secondary">
-                          Strategy
-                        </div>
-                      </div>
-                      <p>
-                        We create a classfication model to identify between the
-                        two possible categories MSS and MSIMUS (MSI) of cancer.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              </div>
+              <div className="px-6">
+                <hr className="border-base-100" />
               </div>
             </div>
-            <div className="px-6">
-              <hr className="border-base-100" />
-            </div>
+            <ClassifierTabs {...props}></ClassifierTabs>
+            <Footer {...props} />
           </div>
-          <ClassifierTabs {...props}></ClassifierTabs>
-          <Footer {...props} />
         </div>
-      </div>
+      </ClassificationHistoryProvider>
     </>
   );
 }
