@@ -1,18 +1,25 @@
 import React, { useState } from "react";
+import ClassifyButton from "../ClassifyButton/ClassifyButton";
 import { filterValidImages } from "../../utils/imageUtils";
 
 const UploadTab = () => {
   const [uploadState, setUploadState] = useState(null);
+  const [uploadFiles, setUploadFiles] = useState(null);
 
-  const changeHandler = async (event) => {
-    event.preventDefault(); // Prevent default form submission
+  const uploadHandler = async (event) => {
+    event.preventDefault(); // Prevent default event
 
     const fileList = Array.from(event.target.files); // Get array from FileList object
     const validImageFiles = await filterValidImages(fileList); // Get valid images from fileList array
 
     validImageFiles.length > 0 ? setUploadState(true) : setUploadState(false);
+    validImageFiles.length > 0
+      ? setUploadFiles(validImageFiles)
+      : setUploadState(null);
+
     return;
   };
+
   return (
     <div className="card text-base-content">
       <div className="card-body">
@@ -34,18 +41,14 @@ const UploadTab = () => {
               multiple={true}
               type="file"
               className="hidden"
-              onChange={changeHandler}
+              onChange={uploadHandler}
             />
           </label>
           <div className="justify-center card-actions">
-            <button
-              className={`w-32 btn btn-med ${
-                uploadState != true ? "btn-disabled" : "btn-secondary"
-              }`}
-              id="classifyButton"
-            >
-              Classify
-            </button>
+            <ClassifyButton
+              activeState={uploadState}
+              fileList={uploadFiles}
+            ></ClassifyButton>
           </div>
         </div>
       </div>
