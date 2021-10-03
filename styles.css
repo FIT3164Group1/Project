@@ -785,7 +785,7 @@ html {
   outline-offset: 2px;
 }
 
-.btn-disabled {
+.btn-disabled,.btn[disabled] {
   pointer-events: none;
   --tw-bg-opacity: 1;
   --tw-bg-opacity: 0.2;
@@ -1139,6 +1139,14 @@ html {
   outline-offset: 2px;
 }
 
+.menu li.disabled>a,.menu li.disabled>span {
+  cursor: auto;
+  --tw-text-opacity: 1;
+  --tw-text-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-text-opacity,1));
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -1219,6 +1227,18 @@ html {
   outline-offset: 2px;
   box-shadow: 0 0 0 2px hsl(219 14.1% 27.8%),0 0 0 4px hsla(228 14.3% 93.1%/.2);
   box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsla(var(--bc)/.2);
+}
+
+.select[disabled] {
+  pointer-events: none;
+  --tw-bg-opacity: 1;
+  background-color: hsla(222 13.4% 19%/1);
+  background-color: hsla(var(--b2)/var(--tw-bg-opacity,1));
+  --tw-border-opacity: 1;
+  border-color: hsla(222 13.4% 19%/1);
+  border-color: hsla(var(--b2)/var(--tw-border-opacity,1));
+  cursor: not-allowed;
+  --tw-text-opacity: 0.2;
 }
 
 .stack {
@@ -1692,6 +1712,38 @@ html {
   --tw-border-opacity: 0.2;
 }
 
+.input[disabled] {
+  --tw-bg-opacity: 1;
+  background-color: hsla(222 13.4% 19%/1);
+  background-color: hsla(var(--b2)/var(--tw-bg-opacity,1));
+  --tw-border-opacity: 1;
+  border-color: hsla(222 13.4% 19%/1);
+  border-color: hsla(var(--b2)/var(--tw-border-opacity,1));
+  cursor: not-allowed;
+  --tw-text-opacity: 0.2;
+}
+
+.input[disabled]::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-placeholder-opacity,1));
+}
+
+.input[disabled]:-ms-input-placeholder {
+  --tw-placeholder-opacity: 1;
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-placeholder-opacity,1));
+}
+
+.input[disabled]::placeholder {
+  --tw-placeholder-opacity: 1;
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-placeholder-opacity,1));
+}
+
 .link:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1733,6 +1785,10 @@ html {
   --tw-text-opacity: 1;
   color: hsla(0 0% 100%/1);
   color: hsla(var(--pc)/var(--tw-text-opacity,1));
+}
+
+.menu li.disabled>a:hover,.menu li.disabled>span:hover {
+  background-color: transparent;
 }
 
 .menu li.bordered a,.menu li.bordered span {
@@ -1798,6 +1854,27 @@ html {
     box-shadow: 0 0 0 4px hsl(219 14.1% 27.8%) inset,0 0 0 4px hsl(219 14.1% 27.8%) inset,var(--focus-shadow);
     box-shadow: 0 0 0 4px hsl(var(--b1)) inset,0 0 0 4px hsl(var(--b1)) inset,var(--focus-shadow);
   }
+}
+
+.select[disabled]::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-placeholder-opacity,1));
+}
+
+.select[disabled]:-ms-input-placeholder {
+  --tw-placeholder-opacity: 1;
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-placeholder-opacity,1));
+}
+
+.select[disabled]::placeholder {
+  --tw-placeholder-opacity: 1;
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-placeholder-opacity,1));
 }
 
 .tab:hover {
@@ -1899,6 +1976,38 @@ html {
 
 .textarea-bordered {
   --tw-border-opacity: 0.2;
+}
+
+.textarea[disabled] {
+  --tw-bg-opacity: 1;
+  background-color: hsla(222 13.4% 19%/1);
+  background-color: hsla(var(--b2)/var(--tw-bg-opacity,1));
+  --tw-border-opacity: 1;
+  border-color: hsla(222 13.4% 19%/1);
+  border-color: hsla(var(--b2)/var(--tw-border-opacity,1));
+  cursor: not-allowed;
+  --tw-text-opacity: 0.2;
+}
+
+.textarea[disabled]::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-placeholder-opacity,1));
+}
+
+.textarea[disabled]:-ms-input-placeholder {
+  --tw-placeholder-opacity: 1;
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-placeholder-opacity,1));
+}
+
+.textarea[disabled]::placeholder {
+  --tw-placeholder-opacity: 1;
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(228 14.3% 93.1%/1);
+  color: hsla(var(--bc)/var(--tw-placeholder-opacity,1));
 }
 
 .rounded-box {
