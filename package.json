@@ -1,10 +1,12 @@
 {
-  "name": "fit3164-cnn-website",
+  "name": "fit3164-group1-website",
   "version": "1.0.0",
   "description": "Front-end user interface for a CNN classification model served on Google Cloud Platform.",
+  "homepage": "https://fit3164group1.github.io/Project/",
   "main": "custom.js",
   "scripts": {
     "build": "webpack",
+    "deploy": "gh-pages -d dist",
     "dev": "webpack serve",
     "lint": "eslint --ext .js,.jsx .",
     "lint:fix": "eslint --fix --ext .js,.jsx .",
@@ -20,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/FIT3164Group1/Project/issues"
   },
-  "homepage": "https://github.com/FIT3164Group1/Project#readme",
   "dependencies": {
     "@babel/runtime": "^7.15.4",
     "axios": "^0.21.4",
