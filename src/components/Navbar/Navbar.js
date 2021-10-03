@@ -6,35 +6,35 @@ class Navbar extends Component {
     const { home, about, contact } = this.props;
     return (
       <div className="p-3">
-        <div className="shadow-lg navbar bg-neutral text-neutral-content rounded-box">
-          <div className="hidden px-2 mx-2 lg:flex navbar-start">
+        <div className="flex justify-between shadow-lg navbar bg-neutral text-neutral-content rounded-box ">
+          <div className="hidden px-2 mx-2 lg:flex">
             <a className="text-lg font-bold" href={home}>
               Gastro-intestinal Cancer Classifier
             </a>
           </div>
-          <div className="flex px-1 mx-1 md:px-2 md:mx-2 ">
+          <div className="flex-grow px-1 mx-1  md:px-2 md:mx-2">
             <div className="flex items-stretch">
               <a
-                className="px-1 btn btn-ghost btn-sm rounded-btn md:px-3"
+                className="px-1 btn btn-ghost btn-md rounded-btn md:px-3"
                 href={home}
               >
                 Home
               </a>
               <a
-                className="px-1 md:px-3 btn btn-ghost btn-sm rounded-btn"
+                className="px-1 md:px-3 btn btn-ghost btn-md rounded-btn"
                 href={about}
               >
                 About the Project
               </a>
               <a
-                className="px-1 md:px-3 btn btn-ghost btn-sm rounded-btn"
+                className="px-1 md:px-3 btn btn-ghost btn-md rounded-btn"
                 href={contact}
               >
                 Contact
               </a>
             </div>
           </div>
-          <div className="flex-grow px-1 mx-1 md:px-2 md:mx-2 navbar-end">
+          <div tabIndex="0" className="justify-end px-1 mx-1 md:px-2 md:mx-2">
             <button className="fill-current btn btn-square btn-ghost text-neutral-content">
               <a
                 href="https://github.com/FIT3164Group1/Project"
