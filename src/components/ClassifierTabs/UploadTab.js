@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ClassificationHistoryContext } from "../ClassificationHistoryProvider/ClassificationHistoryProvider";
 import ClassifyButton from "../ClassifyButton/ClassifyButton";
+import { classifyImageFiles } from "../../utils/classifyUtils";
 import { filterValidImages } from "../../utils/imageUtils";
 
 const UploadTab = () => {
@@ -20,10 +22,17 @@ const UploadTab = () => {
     return;
   };
 
+  const Context = useContext(ClassificationHistoryContext);
+
+  const buttonHandler = async (event) => {
+    event.preventDefault(); // Prevent default event
+    const classifications = await classifyImageFiles(uploadFiles);
+    Context.setClassifications(classifications);
+  };
+
   return (
     <div className="card text-base-content">
       <div className="card-body">
-        <div className="card-title">Classify</div>
         <div className="form-control">
           <label className="flex flex-col items-center w-64 px-4 py-6 tracking-wide uppercase bg-transparent border rounded-lg shadow-lg cursor-pointer border-primary text-base-content hover:bg-primary hover:text-base-100">
             <svg
@@ -47,7 +56,7 @@ const UploadTab = () => {
           <div className="justify-center card-actions">
             <ClassifyButton
               activeState={uploadState}
-              fileList={uploadFiles}
+              buttonHandler={buttonHandler}
             ></ClassifyButton>
           </div>
         </div>

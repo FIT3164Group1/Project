@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Carousel from "../Carousel/Carousel";
+import { ClassificationHistoryContext } from "../ClassificationHistoryProvider/ClassificationHistoryProvider";
 import ClassifyButton from "../ClassifyButton/ClassifyButton";
+import { classifyImageFiles } from "../../utils/classifyUtils";
+import { getFilenameFromURL } from "../../utils/utils";
 
 const TestTab = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -10,10 +13,10 @@ const TestTab = (props) => {
     const { index } = params;
     event.preventDefault(); // Prevent default event
     setSelectedImage(params); // Set selected image state according to index
-
     const imagePath = event.target.src; // Get selected image path
+    const imageName = getFilenameFromURL(imagePath);
     let imageBlob = await fetch(imagePath).then((r) => r.blob()); // Load image blob
-    const imageFile = new File([imageBlob], "image"); // Construct File object from image blob
+    const imageFile = new File([imageBlob], `${imageName}`); // Construct File object from image blob
 
     setSelectedImageFile([imageFile]); // Store File object in State
 
@@ -30,6 +33,13 @@ const TestTab = (props) => {
       ? setSelectedImage(null) // Deselect image
       : "";
   };
+  const Context = useContext(ClassificationHistoryContext);
+
+  const buttonHandler = async (event) => {
+    event.preventDefault(); // Prevent default event
+    const classifications = await classifyImageFiles(selectedImageFile);
+    Context.setClassifications(classifications);
+  };
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClick, false); // Check for user click on page
@@ -41,7 +51,6 @@ const TestTab = (props) => {
   return (
     <div className="card text-base-content">
       <div className="card-body">
-        <div className="card-title">Classify</div>
         <Carousel
           {...props}
           selectedImage={selectedImage}
@@ -50,7 +59,7 @@ const TestTab = (props) => {
         <div className="justify-center card-actions">
           <ClassifyButton
             activeState={selectedImage == null ? false : true}
-            fileList={selectedImageFile}
+            buttonHandler={buttonHandler}
           ></ClassifyButton>
         </div>
       </div>

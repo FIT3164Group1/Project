@@ -1,14 +1,8 @@
-import { classifyImageFiles } from "../../utils/classifyUtils";
 import PropTypes from "prop-types";
 import React from "react";
 
 const ClassifyButton = (props) => {
-  const { activeState, fileList } = props;
-
-  const buttonHandler = async (event) => {
-    event.preventDefault(); // Prevent default event
-    await classifyImageFiles(fileList);
-  };
+  const { activeState, buttonHandler } = props;
 
   return (
     <button
@@ -25,7 +19,7 @@ const ClassifyButton = (props) => {
 
 ClassifyButton.propTypes = {
   activeState: PropTypes.bool,
-  fileList: PropTypes.array,
+  buttonHandler: PropTypes.func,
 };
 
 export default ClassifyButton;
