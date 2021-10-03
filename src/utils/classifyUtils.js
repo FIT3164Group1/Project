@@ -39,9 +39,14 @@ export const classifyImageFiles = async (fileList) => {
   };
 
   const response = await axios(config);
-  const predictions = response.data.predictions;
-  predictions.map((prediction, index) =>
-    console.log(`Prediction ${index}: ${prediction}`)
-  );
-  return;
+  try {
+    const predictions = response.data.predictions;
+    const classifications = fileList.map((file, index) => [
+      file.name,
+      predictions[index][0],
+    ]);
+    return classifications;
+  } catch (error) {
+    console.error(error);
+  }
 };
