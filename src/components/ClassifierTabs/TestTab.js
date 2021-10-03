@@ -20,6 +20,9 @@ const TestTab = (props) => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClick, false);
+    return () => {
+      document.removeEventListener("mousedown", handleClick, false);
+    };
   }, [handleClick]);
 
   return (
