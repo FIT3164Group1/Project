@@ -9,7 +9,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 // const ESLintPlugin = require('eslint-webpack-plugin')
 
 const webpackConfig = {
-  mode: "development",
+  mode: "production",
   // target: ['web'],
   entry: {
     index: path.resolve(__dirname, "./src/pages/index/index.js"),
