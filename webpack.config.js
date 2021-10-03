@@ -9,7 +9,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 // const ESLintPlugin = require('eslint-webpack-plugin')
 
 const webpackConfig = {
-  mode: "production",
+  mode: "development",
   // target: ['web'],
   entry: {
     index: path.resolve(__dirname, "./src/pages/index/index.js"),
@@ -19,7 +19,7 @@ const webpackConfig = {
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "[name].bundle.js",
-    assetModuleFilename: "images/[hash][ext][query]",
+    assetModuleFilename: "images/[name][ext]",
   },
   plugins: [
     new HtmlWebpackPlugin({
