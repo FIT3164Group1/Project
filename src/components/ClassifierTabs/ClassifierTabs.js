@@ -21,31 +21,43 @@ const ClassifierTabs = (props) => {
   return (
     <div className="mt-5">
       <div className="flex flex-col items-center space-y-2">
-        <div className="tabs tabs-boxed">
-          <a
-            className={`tab ${tabState == "upload" ? "tab-active" : ""}`}
-            onClick={() => {
-              setTabState("upload");
-            }}
-          >
-            Upload image
-          </a>
-          <a
-            className={`tab ${tabState == "test" ? "tab-active" : ""}`}
-            onClick={() => {
-              setTabState("test");
-            }}
-          >
-            Try Me!
-          </a>
-          <a
-            className={`tab ${tabState == "validate" ? "tab-active" : ""}`}
-            onClick={() => {
-              setTabState("validate");
-            }}
-          >
-            Validate accuracy
-          </a>
+        <div className="items-center bg-transparent tabs tabs-boxed">
+          <div className="z-10 p-2 bg-white shadow-2xl md:pr-5 rounded-xl">
+            <a
+              className={`tab ${
+                tabState == "upload" ? "tab-active shadow-lg" : ""
+              }`}
+              onClick={() => {
+                setTabState("upload");
+              }}
+            >
+              Upload image
+            </a>
+          </div>
+          <div className="z-20 justify-center p-2 -m-2 bg-white shadow rounded-xl">
+            <a
+              className={`tab tab-lg ${
+                tabState == "test" ? "tab-active shadow-lg" : ""
+              }`}
+              onClick={() => {
+                setTabState("test");
+              }}
+            >
+              Try Me!
+            </a>
+          </div>
+          <div className="z-10 p-2 bg-white shadow-2xl md:pl-5 rounded-xl">
+            <a
+              className={`tab ${
+                tabState == "validate" ? "tab-active shadow-lg" : ""
+              }`}
+              onClick={() => {
+                setTabState("validate");
+              }}
+            >
+              Validate accuracy
+            </a>
+          </div>
         </div>
         {renderTabs(tabState, props)}
       </div>
