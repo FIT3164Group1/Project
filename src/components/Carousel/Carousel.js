@@ -29,6 +29,7 @@ const Carousel = (props) => {
                 src={path}
                 onClick={imageClickHandler({ index, image })}
                 id={index}
+                data-label={type}
               />
             </div>
           </div>
