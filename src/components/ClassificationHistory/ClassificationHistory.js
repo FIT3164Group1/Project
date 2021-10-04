@@ -17,8 +17,12 @@ const ClassificationHistory = () => {
     return;
   };
 
-  return classifications.length > 0 ? (
-    <div>
+  return (
+    <div
+      className={
+        classifications != null && classifications.length > 0 ? "" : "hidden"
+      }
+    >
       <div className="px-6">
         <hr className="border-base-100" />
       </div>
@@ -129,8 +133,6 @@ const ClassificationHistory = () => {
         </div>
       </div>
     </div>
-  ) : (
-    <></>
   );
 };
 
