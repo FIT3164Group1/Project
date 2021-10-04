@@ -7,7 +7,13 @@ const ClassifyButton = (props) => {
   return (
     <button
       className={`w-32 btn btn-med ${
-        activeState != true ? "btn-disabled" : "btn-secondary"
+        activeState == "active"
+          ? "btn-secondary"
+          : activeState == "disabled"
+          ? "btn-disabled"
+          : activeState == "hidden"
+          ? "hidden"
+          : ""
       }`}
       id="classifyButton"
       onClick={buttonHandler}
@@ -18,7 +24,7 @@ const ClassifyButton = (props) => {
 };
 
 ClassifyButton.propTypes = {
-  activeState: PropTypes.bool,
+  activeState: PropTypes.string,
   buttonHandler: PropTypes.func,
 };
 
