@@ -3,32 +3,44 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const initialState = {
-  classifications: null,
+  classifications: [],
+  lastClassification: [],
 };
 
 const ClassificationHistoryContext = React.createContext(initialState);
 
 const ClassificationHistoryProvider = ({ children }) => {
-  const [classificationHistory, setClassificationHistory] = useState(() =>
-    getLocalStorage("classifications", initialState)
+  const [classificationHistory, setClassificationHistory] = useState(
+    () => getLocalStorage("classifications", initialState) // Get localStorage state or return initalState if not found
   );
 
   useEffect(() => {
-    setLocalStorage("classifications", classificationHistory);
+    setLocalStorage("classifications", classificationHistory); // Set localStorage
   }, [classificationHistory]);
 
   return (
     <ClassificationHistoryContext.Provider
       value={{
-        classifications: classificationHistory.classifications,
-        setClassifications: (new_classification_history) => {
-          console.log(new_classification_history);
-          setClassificationHistory({
-            classifications: [
-              ...(classificationHistory.classifications || []),
-              ...new_classification_history,
-            ],
-          });
+        classificationHistory: classificationHistory,
+        setClassificationHistory: ({
+          classifications,
+          lastClassification,
+          overwrite = false,
+        }) => {
+          if (overwrite) {
+            setClassificationHistory({
+              classifications: classifications,
+              lastClassification: lastClassification,
+            });
+          } else {
+            setClassificationHistory({
+              classifications: [
+                ...classificationHistory.classifications,
+                ...classifications,
+              ],
+              lastClassification: [...lastClassification],
+            });
+          }
         },
       }}
     >
