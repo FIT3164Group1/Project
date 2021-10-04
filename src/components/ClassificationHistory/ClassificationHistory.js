@@ -30,7 +30,7 @@ const ClassificationHistory = () => {
         <div className="card-body">
           <div className="text-2xl card-title">Classification history</div>
           <div className="p-4 overflow-y-scroll bg-black border rounded-lg max-h-50-vh border-base-100 backdrop-filter backdrop-blur-3xl bg-opacity-10 ">
-            <table className="w-full overflow-y-scroll h-1/3">
+            <table className="w-full overflow-y-scroll table-fixed h-1/3">
               <thead className="">
                 <tr className="">
                   <th className="w-1/12 pb-2 border-b border-base-100">
