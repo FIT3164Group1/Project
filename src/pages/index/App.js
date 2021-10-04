@@ -1,3 +1,4 @@
+import ClassificationHistory from "../../components/ClassificationHistory/ClassificationHistory";
 import ClassificationHistoryProvider from "../../components/ClassificationHistoryProvider/ClassificationHistoryProvider";
 import ClassifierTabs from "../../components/ClassifierTabs/ClassifierTabs";
 import Footer from "../../components/Footer/Footer";
@@ -37,7 +38,7 @@ function App() {
           <div className="md:w-4/5">
             <div className="card text-base-content">
               <div className="card-body">
-                <div className="mb-5 text-center card-title">
+                <div className="mb-16 text-5xl text-center card-title">
                   Gastro-intestinal Cancer Classification
                 </div>
                 <div className="flex flex-col gap-3 md:flex-row">
@@ -79,6 +80,10 @@ function App() {
               </div>
             </div>
             <ClassifierTabs {...props}></ClassifierTabs>
+            <div className="px-6">
+              <hr className="border-base-100" />
+            </div>
+            <ClassificationHistory></ClassificationHistory>
             <Footer {...props} />
           </div>
         </div>
