@@ -95,7 +95,6 @@ const ClassificationDialog = ({ isOpen, closeDialog }) => {
                                       Incorrect
                                     </span>
                                   ))}
-                                {console.log(classification.label)}
                               </td>
                             </tr>
                           );
