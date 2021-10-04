@@ -1,0 +1,65 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/**
+ * @module url-safe-base64
+ * @license UNLICENSE
+ * @example
+ * import {
+ *   encode, decode, trim,
+ *   isBase64, isUrlSafeBase64
+ * } from 'url-safe-base64'
+ * const safe = encode('A/B+C==')
+ * // > 'A-B_C..'
+ * trim(safe)
+ * // > 'A-B_C'
+ * const base64 = decode(safe)
+ * // > 'A/B+C=='
+ * isBase64(base64)
+ * // > true
+ * isBase64(safe)
+ * // > false
+ * isUrlSafeBase64(base64)
+ * // > false
+ * isUrlSafeBase64(safe)
+ * // > true
+ */
+
+/** @license React v0.20.2
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
