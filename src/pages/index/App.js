@@ -80,9 +80,6 @@ function App() {
               </div>
             </div>
             <ClassifierTabs {...props}></ClassifierTabs>
-            <div className="px-6">
-              <hr className="border-base-100" />
-            </div>
             <ClassificationHistory></ClassificationHistory>
             <Footer {...props} />
           </div>
