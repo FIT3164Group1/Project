@@ -1,19 +1,22 @@
+import { filterValidImages, isValidImage } from "../../utils/imageUtils";
 import React, { useContext, useState } from "react";
 import ClassificationDialog from "../ClassificationDIalog/ClassificationDialog";
 import { ClassificationHistoryContext } from "../ClassificationHistoryProvider/ClassificationHistoryProvider";
 import ClassifyButton from "../ClassifyButton/ClassifyButton";
 import { classifyImageFiles } from "../../utils/classifyUtils";
-import { filterValidImages } from "../../utils/imageUtils";
+import { FileUploadError } from "../Alerts/FileUploadError";
 
 const UploadTab = () => {
   const [uploadState, setUploadState] = useState(null); // 'active', 'null', 'complete'
   const [uploadFiles, setUploadFiles] = useState(null);
+  const [uploadError, setUploadError] = useState(null); // Number of invalid files
   const { setClassificationHistory } = useContext(ClassificationHistoryContext); // Get ClassificationHistory context to add classifications results
 
   const uploadHandler = async (event) => {
     event.preventDefault(); // Prevent default event
     const fileList = Array.from(event.target.files); // Get array from FileList object
     const validImageFiles = await filterValidImages(fileList); // Get valid images from fileList array
+    const invalidFiles = fileList.length - validImageFiles.length;
 
     validImageFiles.length > 0
       ? setUploadState("active") // Active upload state
@@ -21,6 +24,7 @@ const UploadTab = () => {
     validImageFiles.length > 0
       ? setUploadFiles(validImageFiles) // Store valid image files in state
       : setUploadFiles(null);
+    invalidFiles > 0 ? setUploadError(invalidFiles) : ""; // Set upload error
 
     event.target.value = null; // Clear upload field
     return;
@@ -96,6 +100,10 @@ const UploadTab = () => {
           ></ClassificationDialog>
         </div>
       </div>
+      <FileUploadError
+        isOpen={uploadError}
+        closeDialog={() => setUploadError(null)}
+      ></FileUploadError>
     </div>
   );
 };

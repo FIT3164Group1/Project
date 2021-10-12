@@ -20,7 +20,12 @@ const getUploadedFileDimensions = (file) =>
     }
   });
 
-const isValidImage = async (file) => {
+export const filterValidImages = async (fileList) => {
+  const results = await Promise.all(fileList.map(isValidImage)); // Return array with false for invalid images
+  return results.filter((file) => file != false); // Filter out invalid files
+};
+
+export const isValidImage = async (file) => {
   if (await validateImage(file)) {
     const { width, height } = await getUploadedFileDimensions(file);
     if (width == 224 && height == 224) {
@@ -37,9 +42,4 @@ const isValidImage = async (file) => {
     );
     return false;
   }
-};
-
-export const filterValidImages = async (fileList) => {
-  const results = await Promise.all(fileList.map(isValidImage)); // Return array with false for invalid images
-  return results.filter((file) => file != false); // Filter out invalid files
 };
