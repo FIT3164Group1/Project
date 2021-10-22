@@ -1,7 +1,18 @@
 import { validateImage } from "image-validator";
 
-const getUploadedFileDimensions = (file) =>
-  new Promise((resolve, reject) => {
+export const filterValidImages = async (fileList) => {
+  if (fileList === "" || typeof fileList == "undefined" || fileList === null) {
+    throw "File parameter must contain an array of File objects";
+  }
+  const results = await Promise.all(fileList.map(isValidImage)); // Return array with false for invalid images
+  return results.filter((file) => file != false); // Filter out invalid files
+};
+
+export const getUploadedFileDimensions = (file) => {
+  return new Promise((resolve, reject) => {
+    if (file === "" || typeof file == "undefined" || file === null) {
+      throw "File parameter must contain a File object";
+    }
     try {
       let img = new Image();
 
@@ -19,13 +30,12 @@ const getUploadedFileDimensions = (file) =>
       return reject(exception);
     }
   });
-
-export const filterValidImages = async (fileList) => {
-  const results = await Promise.all(fileList.map(isValidImage)); // Return array with false for invalid images
-  return results.filter((file) => file != false); // Filter out invalid files
 };
 
 export const isValidImage = async (file) => {
+  if (file === "" || typeof file == "undefined" || file === null) {
+    throw "File parameter must contain a File object";
+  }
   if (await validateImage(file)) {
     const { width, height } = await getUploadedFileDimensions(file);
     if (width == 224 && height == 224) {
