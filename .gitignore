@@ -9,3 +9,4 @@ src/stories
 package-lock.json
 .vscode/launch.json
 coverage
+test-report.html
