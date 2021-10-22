@@ -7,3 +7,5 @@ dist
 .storybook
 src/stories
 package-lock.json
+.vscode/launch.json
+coverage
